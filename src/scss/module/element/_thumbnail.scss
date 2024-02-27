@@ -1,0 +1,46 @@
+@use '../../global' as *;
+
+/*===============================================
+thumbnail
+===============================================*/
+.el_thumb {
+   overflow: hidden;
+   position: relative;
+   z-index: 10;
+
+   &_bg {
+      @include transition;
+      transition-property: transform;
+
+      picture {
+         @include absolute(0, 0, 0, 0);
+         width: 100%;
+         height: 100%;
+
+         img {
+            object-fit: cover;
+            object-position: center;
+            max-width: initial;
+            width: 100%;
+            height: 100%;
+         }
+      }
+   }
+
+   &.__16-9 {
+      .el_thumb_bg {
+         padding-top: $r-16-9;
+      }
+   }
+
+   &.__3-2 {
+      .el_thumb_bg {
+         padding-top: $r-3-2;
+      }
+   }
+}
+
+.el_thumb,
+.el_thumb_bg {
+   background-color: #c4c4c4;
+}

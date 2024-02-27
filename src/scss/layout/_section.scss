@@ -1,0 +1,32 @@
+@use "../global" as *;
+
+/*===============================================
+section
+===============================================*/
+.ly_sect {
+   //marginTop
+   &.__mtLv1 {
+      margin-top: $spacing-1;
+   }
+   &.__mtLv2 {
+      margin-top: $spacing-2;
+   }
+   &.__mtLv3 {
+      margin-top: $spacing-3;
+   }
+   &.__mtLv4 {
+      margin-top: $spacing-4;
+   }
+   &.__mtLv5 {
+      margin-top: $spacing-5;
+   }
+   &.__mtLv6 {
+      margin-top: $spacing-6;
+   }
+   &.__mtLv7 {
+      margin-top: $spacing-7;
+   }
+   &.__mtLv8 {
+      margin-top: $spacing-8;
+   }
+}

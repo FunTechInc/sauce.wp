@@ -1,0 +1,690 @@
+@use "../global" as *;
+
+@mixin form {
+   /*===============================================
+	form demo
+	===============================================*/
+   // inputの背景色
+   $formInputBg: #f7f7f7;
+   //placeholderの色
+   $placeholderColor: rgba(17, 17, 17, 0.4);
+   //inputの高さ
+   $formInputHeight: $spacing-5;
+   //ラジオ・チェックボタンの大きさ
+   $radioSize: #{$spacing-2};
+   $checkboxSize: #{$spacing-2};
+
+   /*===============================================
+	form_group
+	===============================================*/
+   .bl_form_group {
+      &:not(:first-of-type) {
+         margin-top: $spacing-2;
+
+         @include mq(sm) {
+            margin-top: $spacing-4;
+         }
+      }
+      &.__flex {
+         display: flex;
+         align-items: center;
+
+         @include mq(md) {
+            display: block;
+         }
+
+         .bl_form_group_title {
+            flex-shrink: 0;
+            width: 26rem;
+
+            @include mq(md) {
+               width: 100%;
+               margin-bottom: $spacing-half;
+            }
+         }
+      }
+
+      &.__block {
+         display: block;
+
+         .bl_form_group_title {
+            margin-bottom: $spacing-1;
+
+            @include mq(md) {
+               margin-bottom: $spacing-half;
+            }
+         }
+      }
+   }
+
+   .bl_form_group_title {
+      display: block;
+      position: relative;
+      font-weight: bold;
+      font-size: $fontsize-2;
+      line-height: $leading-tight;
+
+      @include hover {
+         + .bl_form_input_wrapper .bl_form_input {
+            border: 0.2rem solid $color-key;
+         }
+      }
+
+      .__require {
+         display: inline-block;
+         margin-right: $spacing-half;
+         padding: 0 $spacing-half;
+         border-radius: 0.2rem;
+         background-color: $color-key;
+         color: #fff;
+         font-weight: bold;
+         font-size: $fontsize-1;
+         line-height: $spacing-2;
+      }
+   }
+
+   /*===============================================
+	form_input_wrapper
+	===============================================*/
+   .bl_form_input_wrapper {
+      display: block;
+      width: 100%;
+
+      &.__flex {
+         display: flex;
+         align-items: flex-start;
+
+         @include mq(sm) {
+            justify-content: space-between;
+         }
+      }
+   }
+
+   /*===============================================
+	form_input
+	===============================================*/
+   .bl_form_input {
+      @include placeholder($placeholderColor);
+      width: 100%;
+      height: $formInputHeight;
+      padding: 0 $spacing-2;
+      overflow: hidden;
+      border: 0.2rem solid transparent;
+      background-color: $formInputBg;
+      font-size: 1.6rem;
+      line-height: $formInputHeight;
+      vertical-align: middle;
+      cursor: pointer;
+
+      @include transition;
+      transition-property: border-color;
+
+      @include hover {
+         border: 0.2rem solid $color-key;
+      }
+
+      @include mq(sm) {
+         padding: 0 $spacing-half;
+      }
+
+      &:focus {
+         border: 0.2rem solid $color-key;
+         outline: 0;
+      }
+
+      &.__select {
+         background-image: url("#{$path}/assets/images/element/icon/select.svg");
+         background-position: calc(100% - 2.4rem) center;
+         background-size: 1.4rem;
+         background-repeat: no-repeat;
+
+         @include mq(sm) {
+            background-position: calc(100% - 0.8rem) center;
+            background-size: 1rem;
+         }
+      }
+
+      &.__textarea {
+         height: 24rem;
+         padding: $spacing-1 $spacing-2;
+         line-height: $leading-snug;
+      }
+
+      //インプット要素の幅を変える
+      &_name {
+         width: min(100%, 32rem);
+
+         &:not(:last-child) {
+            margin-right: $spacing-1;
+         }
+      }
+
+      &_tel {
+         width: min(100%, 32rem);
+      }
+
+      &_select {
+         width: min(100%, 40rem);
+      }
+   }
+
+   /*===============================================
+	radio,
+	checkbox
+	===============================================*/
+   .bl_form_input_radio_wrapper,
+   .bl_form_input_check_wrapper {
+      display: flex;
+
+      input[type="radio"],
+      input[type="checkbox"] {
+         opacity: 0;
+         position: absolute;
+         left: 100vw;
+         z-index: -9999;
+
+         //キーボード操作の時のfocusを当てる
+         &:focus-visible {
+            + .wpcf7-list-item-label:after {
+               background-color: rgba($color-key, 0.2);
+            }
+         }
+
+         @include hover {
+            + .wpcf7-list-item-label:after {
+               background-color: rgba($color-key, 0.2);
+            }
+         }
+      }
+
+      .wpcf7-list-item {
+         cursor: pointer;
+
+         &:not(:last-of-type) {
+            margin-right: $spacing-half;
+         }
+      }
+
+      label {
+         width: auto;
+         margin-right: 0;
+         margin-bottom: 0;
+         line-height: 1;
+
+         input[type="radio"]:checked + .wpcf7-list-item-label:before,
+         input[type="checkbox"]:checked + .wpcf7-list-item-label:before {
+            opacity: 1;
+         }
+
+         .wpcf7-list-item-label {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            padding: 0 $spacing-1 0 $spacing-4;
+            border: 0.1rem solid transparent;
+            font-weight: bold;
+            font-size: $fontsize-2;
+         }
+
+         .wpcf7-list-item-label:before,
+         .wpcf7-list-item-label:after {
+            @include transition;
+            transition-property: background-color;
+
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            content: "";
+         }
+
+         @include hover {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+         }
+      }
+   }
+
+   //ラジオボタン
+   .bl_form_input_radio_wrapper .wpcf7-list-item-label {
+      line-height: $radioSize;
+
+      &:before {
+         opacity: 0;
+         left: 1rem;
+         z-index: 1;
+         width: 1.2rem;
+         height: 1.2rem;
+         margin-top: 0;
+         border-radius: 50%;
+         background-color: $color-key;
+      }
+
+      &:after {
+         left: 0;
+         z-index: 0;
+         width: $radioSize;
+         height: $radioSize;
+         margin-top: 0;
+         border: 0.1rem solid $color-base;
+         border-radius: 50%;
+         background-color: $formInputBg;
+      }
+   }
+   //チェックボタン
+   .bl_form_input_check_wrapper .wpcf7-list-item-label {
+      line-height: $checkboxSize;
+
+      &::before {
+         opacity: 0;
+         left: 0.6rem;
+         z-index: 1;
+         width: 1.2rem;
+         height: 1.2rem;
+         margin-top: 0;
+         border-radius: 0.2rem;
+         background-color: $color-key;
+      }
+
+      &:after {
+         left: 0;
+         z-index: 0;
+         width: $checkboxSize;
+         height: $checkboxSize;
+         margin-top: 0;
+         border: 0.1rem solid $color-base;
+         border-radius: 0.2rem;
+         background-color: $formInputBg;
+      }
+   }
+
+   /*===============================================
+	birthday
+	===============================================*/
+   .bl_form_input_birthday_block {
+      width: 33.3333%;
+      p {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+      .wpcf7-form-control-wrap {
+         width: 100%;
+      }
+
+      &:not(:last-of-type) {
+         padding-right: 2.4rem;
+
+         @include mq(sm) {
+            padding-right: 1.6rem;
+         }
+      }
+   }
+   .bl_form_input_birthday_txt {
+      flex-shrink: 0;
+      margin-left: 1rem;
+      font-weight: bold;
+      font-size: 1.4rem;
+      line-height: 1;
+
+      @include mq(sm) {
+         margin-left: 0.4rem;
+         font-size: 1.2rem;
+      }
+   }
+
+   /*===============================================
+	file
+	===============================================*/
+   .bl_form_input_file_wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      input[type="file"] {
+         display: none;
+      }
+
+      button {
+         @include transition;
+         transition-property: background-color, color, border-color;
+
+         display: inline-block;
+         flex-shrink: 0;
+         width: 24rem;
+         border-radius: $formInputHeight;
+         background-color: $color-key;
+         color: #fff;
+         font-weight: bold;
+         font-size: $fontsize-1;
+         line-height: $formInputHeight;
+         text-align: center;
+         border: 0.2rem solid transparent;
+         cursor: pointer;
+
+         @include mq(sm) {
+            width: 21rem;
+         }
+
+         &:focus-visible {
+            background-color: #fff;
+            color: $color-key;
+            border: 0.2rem solid $color-key;
+         }
+
+         @include hover {
+            background-color: #fff;
+            color: $color-key;
+            border: 0.2rem solid $color-key;
+         }
+      }
+   }
+   .bl_form_input_fileName {
+      @include lineHeightCrop($leading-x-tight);
+
+      display: block;
+      width: 100%;
+      padding-left: $spacing-1;
+      color: $color-base;
+      font-size: 1.2rem;
+      font-weight: bold;
+      line-height: $leading-x-tight;
+
+      @include mq(sm) {
+         font-size: 1.1rem;
+      }
+
+      pointer-events: none;
+
+      &.is_fileset {
+         color: red;
+      }
+   }
+
+   /*===============================================
+	submit
+	===============================================*/
+   .bl_submit {
+      width: 100%;
+
+      @include mq(sm) {
+         width: 100%;
+         margin-left: 0;
+      }
+
+      /*===============================================
+		privacyt policy
+		===============================================*/
+      .bl_submit_pp {
+         margin-top: $spacing-4;
+
+         &_title {
+            margin-bottom: $spacing-2;
+            font-weight: bold;
+            font-size: 2.2rem;
+            line-height: $leading-x-tight;
+            text-align: center;
+         }
+
+         &_cont {
+            height: 24rem;
+            padding: $spacing-2;
+            overflow-y: auto;
+            border: 0.1rem solid $color-base;
+            border-radius: 0.8rem;
+         }
+         &_cont_textBlock {
+            &:not(:first-of-type) {
+               margin-top: $spacing-3;
+            }
+         }
+
+         &_cont_title {
+            margin-bottom: $spacing-half;
+            font-weight: bold;
+            font-size: $fontsize-2;
+            line-height: $leading-x-tight;
+         }
+
+         &_cont_text {
+            font-size: $fontsize-2;
+            line-height: $leading-tight;
+         }
+      }
+
+      /*===============================================
+		privacy check
+		===============================================*/
+      //variables
+      $buttonZoom: scale(1.1);
+      $privacyCheckSize: 3.2rem;
+      #is_ppCheck {
+         display: none;
+      }
+      .bl_submit_ppCheckBtn {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin: $spacing-2 0 $spacing-3;
+         font-weight: bold;
+         font-size: $fontsize-2;
+         text-align: left;
+         cursor: pointer;
+         @include hover {
+            label span {
+               transform: $buttonZoom;
+            }
+         }
+      }
+      .bl_submit_ppCheckBtn label {
+         display: inline-block;
+         position: relative;
+         width: $privacyCheckSize;
+         height: $privacyCheckSize;
+         margin-right: $spacing-1;
+         text-align: center;
+         cursor: pointer;
+
+         span {
+            display: inline-block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 0.1rem solid $color-base;
+            border-radius: 50%;
+            background-color: $formInputBg;
+            vertical-align: middle;
+            @include my-cubic-bezier01;
+            @include transition;
+            transition-property: transform;
+            transform-origin: center;
+
+            &:before {
+               position: absolute;
+               top: 1.5rem;
+               left: 0.8rem;
+               transform: rotate(45deg);
+               width: 0;
+               height: 0.2rem;
+               background: $color-key;
+               content: "";
+               transform-origin: 0 0;
+            }
+
+            &:after {
+               position: absolute;
+               top: 2.2rem;
+               left: 1.2rem;
+               transform: rotate(305deg);
+               width: 0;
+               height: 0.2rem;
+               background: $color-key;
+               content: "";
+               transform-origin: 0 0;
+            }
+         }
+
+         &.is_checked span {
+            transform: $buttonZoom;
+            background-color: $color-key;
+            border: 0.1rem solid $color-key;
+
+            &:after {
+               width: 1.5rem;
+               background: #fff;
+               transition: width 0.15s ease 0.1s;
+            }
+
+            &:before {
+               width: 0.8rem;
+               background: #fff;
+               transition: width 0.15s ease;
+            }
+         }
+      }
+
+      .bl_submit_ppCheck_txt {
+         @include lineHeightCrop($leading-snug);
+
+         display: inline-block;
+         line-height: $leading-snug;
+
+         a {
+            display: inline;
+            text-decoration: underline;
+         }
+      }
+
+      /*===============================================
+		submit btn
+		===============================================*/
+      .bl_submit_btn_wrapper {
+         position: relative;
+
+         .ajax-loader {
+            position: absolute;
+         }
+      }
+      .bl_submit_btn {
+         @include transition;
+
+         display: block;
+         width: min(100%, 32rem);
+         margin: 0 auto;
+         border: 0.2rem solid $color-key;
+         background-color: $color-key;
+         color: #fff;
+         font-weight: bold;
+         font-size: 2rem;
+         line-height: $spacing-8;
+         text-align: center;
+         outline: 0;
+         cursor: pointer;
+         transition-property: background-color, border, color;
+
+         &:focus {
+            outline: 0;
+         }
+
+         &:focus-visible {
+            background-color: #fff;
+            color: $color-key;
+         }
+
+         @include hover {
+            background-color: #fff;
+            color: $color-key;
+         }
+      }
+
+      .bl_submit_btn[disabled] {
+         border: 0.2rem solid $formInputBg;
+         background: none;
+         background-color: $formInputBg;
+         color: $placeholderColor;
+
+         pointer-events: none;
+      }
+   }
+
+   /*===============================================
+	cf7 validation 
+	===============================================*/
+   .wpcf7-not-valid-tip {
+      display: block;
+      width: 100%;
+      margin-top: 0.8rem !important;
+      padding: 0.5rem;
+      border: 0.1rem solid #e35b66 !important;
+      border-radius: 0.4rem;
+      background-color: #fff0f1;
+      color: #cc3340;
+      font-size: 1.2rem !important;
+      line-height: $leading-x-tight;
+   }
+
+   .wpcf7 form.invalid .wpcf7-response-output,
+   .wpcf7 form.unaccepted .wpcf7-response-output {
+      display: block;
+      width: 56rem;
+      max-width: 100%;
+      margin: 1.6rem auto 0;
+      padding: 0.5rem;
+      border: 0.1rem solid #e35b66 !important;
+      border-radius: 0.4rem;
+      background-color: #fff0f1;
+      color: #cc3340;
+      font-size: 1.2rem !important;
+      text-align: center;
+   }
+
+   //送信成功
+   div.wpcf7-mail-sent-ok {
+      background: #d5edda;
+      color: #185626;
+   }
+
+   //送信NG
+   div.wpcf7-validation-errors,
+   div.wpcf7-acceptance-missing {
+      border: 0.1rem solid #cc3340;
+      background: #f7d7da;
+      color: #cc3340;
+   }
+
+   //送信失敗
+   div.wpcf7-mail-sent-ng {
+      border: 0.1rem solid #cc3340;
+      background: #fff0f1;
+      color: #cc3340;
+   }
+
+   //スパムなどで送信ブロックされた場合
+   div.wpcf7-spam-blocked {
+      border: 0.1rem solid #feedbd;
+      background: #fff2cf;
+      color: #846314;
+   }
+
+   .wpcf7-form-control-wrap.period {
+      width: 100%;
+   }
+
+   .bl_submitBtn_wrapper {
+      .ajax-loader {
+         position: absolute;
+      }
+
+      .wpcf7-spinner {
+         position: absolute;
+         right: 0;
+         bottom: -3.2rem;
+         left: 0;
+         margin: auto;
+      }
+   }
+}
+
+.bl_form {
+   margin: $spacing-12 0;
+   @include form();
+}

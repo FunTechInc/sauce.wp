@@ -1,0 +1,230 @@
+@use "../../../global" as *;
+
+/*===============================================
+header layout
+===============================================*/
+.bl_header {
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: 9999;
+
+   &_inner {
+      align-items: center;
+      height: var(--headerHeight);
+      display: flex;
+      justify-content: space-between;
+      width: calc(100% - $spacing-8);
+      margin: 0 auto;
+      @include mq(sm) {
+         width: calc(100% - $spacing-3);
+      }
+   }
+}
+
+/*===============================================
+header logo
+===============================================*/
+.bl_headerLogo {
+   @include transition;
+   width: 24rem;
+   font-size: 0;
+   transition-property: opacity;
+   position: relative;
+   z-index: 10;
+
+   @include hover {
+      opacity: 0.7;
+   }
+}
+
+/*===============================================
+header nav
+===============================================*/
+.bl_headerNav {
+   @include mq(lg) {
+      display: none;
+   }
+   margin-right: $spacing-4;
+   position: relative;
+   z-index: 0;
+
+   &_wrapper {
+      align-items: center;
+      display: flex;
+   }
+
+   &_list {
+      display: inline-block;
+
+      .bl_headerNav_btn {
+         position: relative;
+         height: var(--headerHeight);
+         padding: 0 $spacing-1;
+         color: $color-base;
+         font-weight: bold;
+         font-size: $fontsize-1;
+         line-height: var(--headerHeight);
+         letter-spacing: 0;
+
+         @include hover {
+            color: $color-key;
+         }
+      }
+   }
+}
+
+/*===============================================
+サブメニュー
+===============================================*/
+.bl_subMenu_parent {
+   position: relative;
+}
+.bl_subMenu_child {
+   position: absolute;
+   width: 16rem;
+   height: 16rem;
+   background-color: $color-key;
+   top: calc(100% - $spacing-1);
+   right: -8rem;
+   left: -8rem;
+   margin: auto;
+   opacity: 0;
+   pointer-events: none;
+}
+
+/*===============================================
+ハンバーガーメニュー
+===============================================*/
+.bl_headerNav_sm {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   width: 100%;
+   height: calc(var(--vh, 1vh) * 100);
+   overflow-x: hidden;
+   overflow-y: auto;
+   pointer-events: auto;
+   //閉じてる状態でfocusが当たらないようにする
+   visibility: hidden;
+   //スクロールバーを削除
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+
+   &::-webkit-scrollbar {
+      display: none;
+   }
+
+   &_inner {
+      width: 100%;
+      padding: $spacing-12 $spacing-1;
+   }
+
+   &_listWrapper {
+      width: 100%;
+      margin: auto;
+      text-align: left;
+
+      .bl_headerNav_sm_list {
+         display: block;
+         line-height: 1;
+
+         &:not(:first-child) {
+            margin-top: $spacing-4;
+         }
+      }
+      .bl_headerNav_sm_btn {
+         display: inline-block;
+         font-weight: bold;
+         font-size: $fontsize-6;
+
+         @include mq(sm) {
+            font-size: $fontsize-3;
+         }
+
+         @include hover {
+            opacity: 0.7;
+         }
+      }
+   }
+}
+
+/*===============================================
+メニュー背景
+===============================================*/
+.bl_headerNav_sm_bg {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   min-height: 100vh;
+   pointer-events: none;
+   z-index: 1;
+   svg {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      .bg_mask {
+         fill: $color-key;
+      }
+   }
+}
+
+/*===============================================
+header hamburger
+===============================================*/
+.bl_hamburgerBtn {
+   position: relative;
+   z-index: 9999;
+   width: $spacing-5;
+   height: $spacing-5;
+   background-color: $color-key;
+   border-radius: 50%;
+   margin: auto;
+   cursor: pointer;
+   pointer-events: auto;
+
+   .bl_hamburgerBtn_trigger {
+      @include absolute(50%, 0, auto, 0);
+      transform: translateY(-50%);
+      margin: auto;
+      width: 40%;
+      pointer-events: auto;
+      svg {
+         width: 100%;
+         path {
+            fill: #fff;
+         }
+      }
+   }
+}
+
+/*===============================================
+アニメーション
+===============================================*/
+.bl_headerNav_sm {
+   visibility: hidden;
+
+   &_listWrapper {
+      .bl_headerNav_sm_list {
+         opacity: 0;
+      }
+      .bl_headerNav_sm_btn {
+         color: #fff;
+      }
+   }
+   .is_smMenu_open & {
+      visibility: visible;
+   }
+}
+
+.bl_headerNav_sm_bg {
+   opacity: 0;
+   visibility: hidden;
+   .is_smMenu_open & {
+      visibility: visible;
+   }
+}

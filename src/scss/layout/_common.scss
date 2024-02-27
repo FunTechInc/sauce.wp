@@ -1,0 +1,34 @@
+@use "../global" as *;
+
+/*===============================================
+common
+===============================================*/
+//コンテンツの高さが画面に満たない場合フッターを画面下部に固定する
+.ly_wrapper {
+   flex-direction: column;
+   display: flex;
+   min-height: calc(var(--vh, 1vh) * 100);
+   &.is_hidden {
+      overflow: hidden;
+   }
+
+   .ly_main {
+      flex: 1;
+   }
+}
+
+// .ly_main {
+//    padding-top: var(--headerHeight);
+// }
+
+@mixin inner($width) {
+   width: min(100% - $spacing-3, $width);
+   margin: 0 auto;
+}
+
+.ly_inner {
+   @include inner(128rem);
+}
+.ly_inner_narrow {
+   @include inner(112rem);
+}

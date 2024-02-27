@@ -1,0 +1,43 @@
+@use "../global" as *;
+/*===============================================
+dummy
+===============================================*/
+.ly_main {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding-top: 0;
+}
+.sampleView {
+   h1 {
+      font-size: 3.2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: $spacing-6;
+   }
+   h3 {
+      margin-top: $spacing-4;
+      text-align: center;
+   }
+   ul {
+      li {
+         &:not(:first-child) {
+            margin-top: $spacing-3;
+         }
+      }
+   }
+   .link {
+      text-align: center;
+      color: $color-key;
+      font-weight: bold;
+      font-size: $fontsize-2;
+      margin-top: $spacing-2;
+   }
+   width: min(100%, 64rem);
+   margin: 0 auto;
+}
+
+.test {
+   background-color: green;
+   height: 400vh;
+}

@@ -1,0 +1,69 @@
+@use "../global" as *;
+
+@mixin display() {
+   visibility: visible;
+   width: auto;
+   height: auto;
+}
+@mixin unDisplay() {
+   visibility: hidden;
+   width: 0;
+   height: 0;
+}
+
+/*===============================================
+device display
+===============================================*/
+//lgのみ
+.dd_lg {
+   @include mq(md) {
+      @include unDisplay;
+   }
+}
+//lgとmd
+.dd_lgmd {
+   @include mq(sm) {
+      @include unDisplay;
+   }
+}
+//mdのみ
+.dd_md {
+   @include unDisplay;
+   @include mq(md) {
+      @include display;
+   }
+   @include mq(sm) {
+      @include unDisplay;
+   }
+}
+//mdとsm
+.dd_mdsm {
+   @include unDisplay;
+   @include mq(md) {
+      @include display;
+   }
+}
+//smのみ
+.dd_sm {
+   @include unDisplay;
+   @include mq(sm) {
+      @include display;
+   }
+}
+
+/*===============================================
+br
+===============================================*/
+br {
+   &.__lg {
+      @include mq(md) {
+         display: none;
+      }
+   }
+   &.__md {
+      display: none;
+      @include mq(md) {
+         display: block;
+      }
+   }
+}

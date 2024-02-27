@@ -1,0 +1,274 @@
+@use 'variables' as *;
+@use 'sass:math';
+
+/*===============================================
+Media Query
+===============================================*/
+$breakpoints: (
+   'sm': 'screen and (max-width:' $sm-device ')',
+   'md': 'screen and (max-width:' $md-device ')',
+   'lg': 'screen and (max-width:' $lg-device ')',
+) !default;
+
+@mixin mq($breakpoint) {
+   @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+   }
+}
+
+/*===============================================
+Line Height Crop
+===============================================*/
+@mixin lineHeightCrop($line-height) {
+   &::before {
+      display: block;
+      width: 0;
+      height: 0;
+      margin-top: calc((1 - #{$line-height}) * 0.5em);
+      content: '';
+   }
+
+   &::after {
+      display: block;
+      width: 0;
+      height: 0;
+      margin-bottom: calc((1 - #{$line-height}) * 0.5em);
+      content: '';
+   }
+}
+
+/*===============================================
+transition
+===============================================*/
+@mixin transition($duration: all 0.3s) {
+   transition: $duration;
+   transition-timing-function: ease-out;
+}
+
+/*===============================================
+my cubic bezier
+===============================================*/
+@mixin my-cubic-bezier01 {
+   //ease out系
+   transition-timing-function: cubic-bezier(0.2, 1.05, 0.7, 0.95);
+}
+
+@mixin cubic-backOut {
+   transition-timing-function: cubic-bezier(0.28, 0.8, 0.36, 1.81);
+}
+
+@mixin cubic-backIn {
+   transition-timing-function: cubic-bezier(0.59, -0.82, 0.79, 0.39);
+}
+
+@mixin cubic-bezier01 {
+   transition-timing-function: cubic-bezier(0.26, 0.06, 0, 1);
+}
+
+@mixin cubic-bezier02 {
+   transition-timing-function: cubic-bezier(0.18, 0.06, 0.23, 1);
+}
+
+@mixin cubic-bezier03 {
+   transition-timing-function: cubic-bezier(0.43, 0.05, 0.17, 1);
+}
+
+@mixin cubic-bezier04 {
+   transition-timing-function: cubic-bezier(0.55, 0.05, 0.22, 0.99);
+}
+
+/*===============================================
+placeholder
+===============================================*/
+
+@mixin placeholder($color) {
+   &::placeholder {
+      color: $color;
+   }
+
+   &:-ms-input-placeholder {
+      color: $color;
+   }
+
+   &::-ms-input-placeholder {
+      color: $color;
+   }
+}
+
+/*===============================================
+background image
+===============================================*/
+@mixin bg_img_cover {
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+@mixin bg_img_contain {
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: center;
+}
+
+@mixin bg_mask {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: 0;
+   left: 0;
+   top: 0;
+}
+
+/*===============================================
+position absolute
+===============================================*/
+//  @include absolute(0,0,0,0);  @include absolute($top:0, $bottom:0);
+@mixin absolute($top: null, $right: null, $bottom: null, $left: null) {
+   position: absolute;
+
+   @if $top !=null {
+      top: $top;
+   }
+
+   @if $right !=null {
+      right: $right;
+   }
+
+   @if $bottom !=null {
+      bottom: $bottom;
+   }
+
+   @if $left !=null {
+      left: $left;
+   }
+}
+
+/*===============================================
+circle
+===============================================*/
+@mixin circle($size, $color) {
+   width: $size;
+   height: $size;
+   border-radius: 50%;
+   background-color: $color;
+}
+
+/*===============================================
+lines-truncate
+===============================================*/
+// @include lines-truncate(3);
+@mixin lines-truncate($lines: 2) {
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: $lines;
+}
+
+/*===============================================
+gradation
+===============================================*/
+// @include gradient(#ff00ff, #ff00cc, vertical);
+@mixin gradient($start-color, $end-color, $orientation) {
+   background: $start-color;
+
+   @if $orientation==vertical {
+      // vertical
+      background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start-color), color-stop(100%, $end-color));
+      background: -webkit-linear-gradient(top, $start-color 0%, $end-color 100%);
+      background: -o-linear-gradient(top, $start-color 0%, $end-color 100%);
+      background: -ms-linear-gradient(top, $start-color 0%, $end-color 100%);
+      background: linear-gradient(to bottom, $start-color 0%, $end-color 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=0);
+   } @else if $orientation==horizontal {
+      // horizontal
+      background: -moz-linear-gradient(left, $start-color 0%, $end-color 100%);
+      background: -webkit-gradient(linear, left top, right top, color-stop(0%, $start-color), color-stop(100%, $end-color));
+      background: -webkit-linear-gradient(left, $start-color 0%, $end-color 100%);
+      background: -o-linear-gradient(left, $start-color 0%, $end-color 100%);
+      background: -ms-linear-gradient(left, $start-color 0%, $end-color 100%);
+      background: linear-gradient(to right, $start-color 0%, $end-color 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=1);
+   } @else {
+      // radial
+      background: -moz-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+      background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $start-color), color-stop(100%, $end-color));
+      background: -webkit-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+      background: -o-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+      background: -ms-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+      background: radial-gradient(ellipse at center, $start-color 0%, $end-color 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=1);
+   }
+}
+
+/*===============================================
+webp対応
+例）@include webpBg(test, j, layout);
+===============================================*/
+@mixin webpBg($img, $kaku: j, $page: '/') {
+   @if $kaku==j {
+      $kaku: jpg;
+   } @else if $kaku==p {
+      $kaku: png;
+   } @else if $kaku==g {
+      $kaku: gif;
+   }
+
+   @if $page== '/' {
+   } @else {
+      $page: '/' + $page + '/';
+   }
+
+   $path1: '../images' + $page + $img + '.webp';
+   $path2: '../images' + $page + $img + '.' + $kaku;
+
+   .webp & {
+      background-image: url($path1);
+   }
+
+   .no-webp & {
+      background-image: url($path2);
+   }
+}
+
+/*===============================================
+単位を取り除く関数
+===============================================*/
+@function su($number) {
+   @if type-of($number) == 'number' and not unitless($number) {
+      @return math.div($number, ($number * 0 + 1));
+   }
+
+   @return $number;
+}
+
+/*===============================================
+font size
+===============================================*/
+//font-size の clamp @include clamp_fs($fontsize-, $sm-design-width, $lg-design-width, $fontsize-);
+@mixin clamp_fs($fs_min, $width_small, $width_large, $fs_max) {
+   $fs_min: su($fs_min);
+   $width_small: su($width_small);
+   $width_large: su($width_large);
+   $fs_max: su($fs_max);
+   $preferred_vw_base: math.div(($fs_max - $fs_min), ($width_large - $width_small));
+   $preferred_vw: ($preferred_vw_base * 100) * 1vw;
+   $preferred_rem: ($width_small * -1 * $preferred_vw_base + $fs_min) * 0.0625rem;
+   font-size: clamp($fs_min * 0.0625rem, $preferred_rem + $preferred_vw, $fs_max * 0.0625rem);
+}
+
+/*===============================================
+タッチデバイスでhoverを無効にするやつ
+===============================================*/
+
+@mixin hover {
+   @media (hover: none) {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+   }
+
+   @media (-ms-high-contrast: none), (-ms-high-contrast: active), (-moz-touch-enabled: 0), (hover: hover) {
+      &:hover {
+         @content;
+      }
+   }
+}

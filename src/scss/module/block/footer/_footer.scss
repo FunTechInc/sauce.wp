@@ -1,0 +1,16 @@
+@use '../../../global' as *;
+
+/*===============================================
+footer
+===============================================*/
+.bl_footer {
+   background-color: $color-key;
+   padding: $spacing-3 0;
+   width: 100%;
+}
+.bl_footerCopyright {
+   color: #fff;
+   display: block;
+   font-size: $fontsize-1;
+   text-align: center;
+}

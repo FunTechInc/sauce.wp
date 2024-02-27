@@ -1,0 +1,135 @@
+$path: "../../wp-content/themes/wp-theme";
+// $path: "..";
+
+/*===============================================
+designRoot
+===============================================*/
+// liquid:1,solid:2,mobile,3
+$designRoot: 1;
+
+// device
+$sm-device: 560px;
+$md-device: 960px;
+$lg-device: 1200px;
+$lg-design-width: 1440;
+$md-design-width: 750;
+$sm-design-width: 375;
+$lg-design-height: 780;
+$sm-design-height: 812;
+$mobile-design-width: 750;
+
+/*===============================================
+unit
+===============================================*/
+$unit: inherit;
+
+//unit
+@if $designRoot==1 {
+   $unit: rem;
+} @else {
+   $unit: px;
+}
+
+/*===============================================
+spacing
+===============================================*/
+$spacing-0: if($designRoot==1, 0, 0);
+$spacing-half: if($designRoot==1, 0.8rem, 8px);
+$spacing-mini: if($designRoot==1, 1.2rem, 12px);
+$spacing-1: if($designRoot==1, 1.6rem, 16px);
+$spacing-2: if($designRoot==1, 2.4rem, 24px);
+$spacing-3: if($designRoot==1, 3.2rem, 32px);
+$spacing-4: if($designRoot==1, 4rem, 40px);
+$spacing-4half: if($designRoot==1, 4.8rem, 48px);
+$spacing-5: if($designRoot==1, 5.6rem, 56px);
+$spacing-6: if($designRoot==1, 6.4rem, 64px);
+$spacing-7: if($designRoot==1, 7.2rem, 72px);
+$spacing-8: if($designRoot==1, 8rem, 80px);
+$spacing-8half: if($designRoot==1, 8.8rem, 88px);
+$spacing-9: if($designRoot==1, 9.6rem, 96px);
+$spacing-10: if($designRoot==1, 10.4rem, 104px);
+$spacing-11: if($designRoot==1, 11.2rem, 112px);
+$spacing-12: if($designRoot==1, 12rem, 120px);
+
+/*===============================================
+ratio
+===============================================*/
+$r-golden: 62%;
+$r-silver: 71%;
+$r-platinum: 58%;
+$r-16-9: 56.25%;
+$r-square: 100%;
+$r-3-2: 66.66%;
+$r-4-3: 75%;
+
+/*===============================================
+font
+===============================================*/
+//font size
+$fontsize-0: if($designRoot==1, 1.2rem, 12px);
+$fontsize-1: if($designRoot==1, 1.4rem, 14px);
+$fontsize-2: if($designRoot==1, 1.6rem, 16px);
+$fontsize-3: if($designRoot==1, 3.2rem, 32px);
+$fontsize-4: if($designRoot==1, 4rem, 40px);
+$fontsize-5: if($designRoot==1, 5.6rem, 56px);
+$fontsize-6: if($designRoot==1, 6.4rem, 64px);
+$fontsize-7: if($designRoot==1, 7.2rem, 72px);
+$fontsize-8: if($designRoot==1, 8rem, 80px);
+$fontsize-9: if($designRoot==1, 9.6rem, 96px);
+
+// line-height @include lineHeightCrop($leading-loose);
+$leading-none: 1 !default;
+$leading-x-tight: 1.3 !default;
+$leading-tight: 1.5 !default;
+$leading-snug: 1.6 !default;
+$leading-normal: 1.7 !default;
+$leading-relaxed: 1.8 !default;
+$leading-loose: 2 !default;
+$leading-x-loose: 2.2 !default;
+
+// letter-spacing
+$letter-spacing-base: 0.05em !default;
+
+@font-face {
+   font-family: "Noto Sans JP";
+   font-weight: 400;
+   src: url("#{$path}/assets/font/NotoSansCJKjp-Regular.woff2") format("woff2"),
+      url("#{$path}/assets/font/NotoSansCJKjp-Regular.woff") format("woff");
+}
+@font-face {
+   font-family: "Noto Sans JP";
+   font-weight: 500;
+   src: url("#{$path}/assets/font/NotoSansCJKjp-Medium.woff2") format("woff2"),
+      url("#{$path}/assets/font/NotoSansCJKjp-Medium.woff") format("woff");
+}
+@font-face {
+   font-family: "Noto Sans JP";
+   font-weight: 600;
+   src: url("#{$path}/assets/font/NotoSansCJKjp-Bold.woff2") format("woff2"),
+      url(".#{$path}/assets/font/NotoSansCJKjp-Bold.woff") format("woff");
+}
+
+// fontfamily
+$fontfamily-base: "Noto Sans JP", -apple-system, BlinkMacSystemFont,
+   "NotoSansCJKjp", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+$fontfamily-eng: "Noto Sans JP", serif;
+
+/*===============================================
+color
+===============================================*/
+//brandColor
+$color-line: #00c300;
+$color-yahoo: #ff0027;
+$color-twitter: #1da1f2;
+$color-facebook: #3b5998;
+$color-insta: #e1306c;
+$FunTech: #c34e00;
+$vanilla: #fef6ed;
+$vanillaBase: #2b1a24;
+$vanillaKey: #2b1a24;
+//colorRegulation
+$color-base: $vanillaBase;
+$color-key: $vanillaKey;
+$color-bg: #fff;
+$color-grey: #f2f2f2;
+$color-bg2: #f7f8fb;

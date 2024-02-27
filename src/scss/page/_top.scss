@@ -1,0 +1,15 @@
+@use "../global" as *;
+
+/*===============================================
+top
+===============================================*/
+.pg_top {
+   &_mv {
+      height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
+
+      //スマホはナビゲーション対策で初期の高さ固定
+      @include mq(sm) {
+         height: calc(calc(var(--fixvh, 1vh) * 100) - var(--headerHeight));
+      }
+   }
+}

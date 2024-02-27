@@ -1,0 +1,26 @@
+@use '../global' as *;
+
+/*===============================================
+thumb_zoom
+===============================================*/
+.an_thumb_zoom {
+   @include hover {
+      .el_thumb {
+         .el_thumb_bg {
+            transform: scale(1.1);
+         }
+      }
+   }
+}
+
+/*===============================================
+scrollAnimation
+===============================================*/
+.js_fadeInUp,
+.js_fadeInUpBlock .line {
+   opacity: 0;
+}
+
+.js_fadeInUpBlock .line {
+   display: inline-block;
+}

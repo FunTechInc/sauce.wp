@@ -1,0 +1,16 @@
+@use "../../global" as *;
+
+/*===============================================
+button
+===============================================*/
+.el_btn {
+   font-size: $fontsize-2;
+   width: $spacing-12;
+   line-height: $spacing-6;
+   height: $spacing-6;
+   background-color: $color-key;
+   border: 2px solid $color-key;
+   text-align: center;
+   color: #fff;
+   font-weight: bold;
+}

@@ -1,0 +1,38 @@
+name: Build and Upload to FTP
+
+# when push to main branch, run the job
+on:
+  push:
+    branches: [ preview ]
+
+# job config
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20.x              
+
+      - name: Install NPM packages
+        run: npm ci      
+        working-directory: ./
+
+      - name: Build
+        run: npm run build
+        working-directory: ./
+
+      - name: Upload to FTP
+        #　use GitHub Action FTP Deploy https://github.com/marketplace/actions/ftp-deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir:  /[server directly]/          
+          protocol: ftps

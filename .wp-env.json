@@ -1,0 +1,9 @@
+{
+   "core": "https://ja.wordpress.org/latest-ja.zip",
+   "themes": ["./wp/themes/templatename"], 
+   "mappings": {      
+      "php.ini": "./php.ini",         
+      "wp-content/plugins": "./wp/plugins"
+   },
+   "plugins": []
+} 

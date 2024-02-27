@@ -1,0 +1,72 @@
+@use '../../global' as *;
+
+/*===============================================
+textBlock
+===============================================*/
+.el_textBlock {
+   &_title {
+      font-size: $fontsize-6;
+      font-weight: bold;
+      line-height: $leading-snug;
+      @include lineHeightCrop($leading-snug);
+   }
+
+   &_text {
+      font-size: $fontsize-2;
+      line-height: $leading-snug;
+      @include lineHeightCrop($leading-snug);
+   }
+
+   &.__center {
+      text-align: center;
+   }
+
+   &.__left {
+      text-align: left;
+   }
+
+   &.__fff {
+      > * {
+         color: #fff !important;
+      }
+   }
+}
+
+//margin
+.el_textBlock {
+   > *:last-child {
+      margin-bottom: 0 !important;
+   }
+
+   .el_textBlock {
+      &_title {
+         margin-bottom: $spacing-2;
+      }
+   }
+
+   //marginBottom
+   &.__mbLv1 {
+      margin-bottom: $spacing-1;
+   }
+   &.__mbLv2 {
+      margin-bottom: $spacing-2;
+   }
+   &.__mbLv3 {
+      margin-bottom: $spacing-3;
+   }
+   &.__mbLv4 {
+      margin-bottom: $spacing-4;
+   }
+   &.__mbLv5 {
+      margin-bottom: $spacing-5;
+   }
+   &.__mbLv6 {
+      margin-bottom: $spacing-6;
+   }
+   &.__mbLv7 {
+      margin-bottom: $spacing-7;
+   }
+   &.__mbLv8 {
+      margin-bottom: $spacing-8;
+   }
+}
