@@ -11,8 +11,8 @@
 					<?php 
 						$ipAddress = "192.168.100.37";
 					?>
-			<link rel="stylesheet" href='<?php echo "http://{$ipAddress}:8888/wp-content/themes/wp-theme/assets/main-5e575c77.css" ?>'>
-			<script type="module" crossorigin src='<?php echo "http://{$ipAddress}:8888/wp-content/themes/wp-theme/assets/main-e78ff657.js" ?>'></script>
+			<link rel="stylesheet" href='<?php echo "http://{$ipAddress}:8888/wp-content/themes/templatenameassets/main-5e575c77.css" ?>'>
+			<script type="module" crossorigin src='<?php echo "http://{$ipAddress}:8888//wp-content/themes/templatename/assets/main-e78ff657.js" ?>'></script>			
 			*/
 		?>
 	<?php else: ?>
