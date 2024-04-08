@@ -18,8 +18,15 @@ const getPos = (target) => {
 //posまでスクロール
 const scrollFunc = (e) => {
    e.preventDefault();
-   const target = document.querySelector(e.target.getAttribute("href"));
-   let pos = getPos(target);
+   const query = e.target.getAttribute("href");
+   let target = null;
+   let pos = 0;   
+   if(query === '#' || query === '' || query === undefined) {
+      pos = 0;
+   } else {      
+      target = document.querySelector(query);
+      pos = getPos(target);      
+   };
    gsap.to(window, {
       duration: DURATIONVAL,
       ease: `${EASEVAL}.out`,
