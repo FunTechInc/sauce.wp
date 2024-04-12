@@ -39,7 +39,7 @@ const vanillaSauce = new VanillaSauce([
 /*===============================================
 once
 ===============================================*/
-import { HeaderSubMenu } from "./header/subMenu";
+import { HeaderSubMenu } from "../../ts/header/subMenu";
 import { resizeReload, WINDOWSM } from "../ts/global";
 
 vanillaSauce.on("once", () => {

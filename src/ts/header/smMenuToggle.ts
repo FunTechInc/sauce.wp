@@ -3,7 +3,7 @@ import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 gsap.registerPlugin(MorphSVGPlugin);
 
 //functions
-import { inertiaScrollSwitch } from "../../ts/common/inertiaScroll";
+import { inertiaScrollSwitch } from "../common/inertiaScroll";
 import { classToggle } from "./classToggle";
 import { themeColorChange } from "./themeColorChange";
 import { focusTrapInit } from "./focusTrap";
@@ -23,7 +23,7 @@ focusTrapInit();
 /*===============================================
 背景の出現
 ===============================================*/
-const bgMaskAnimTL = () => {
+const bgMaskAnimTL = ():gsap.core.Timeline => {
    const menuBg = document.getElementsByClassName("bl_headerNav_sm_bg")[0];
    const menuBgMask = menuBg.getElementsByClassName("bg_mask")[0];
    //以下を実行すればpathに変換できる
@@ -54,11 +54,11 @@ const bgMaskAnimTL = () => {
 /*===============================================
 メニューの出現
 ===============================================*/
-const menuContTL = () => {
-   const smMenu = document.getElementById("js_headerNav_sm");
-   const smMenuList = [
+const menuContTL = ():gsap.core.Timeline => {
+   const smMenu = document.getElementById("js_headerNav_sm");      
+   const smMenuList = smMenu ? [
       ...smMenu.getElementsByClassName("bl_headerNav_sm_list"),
-   ];
+   ] : [];
    const tl = gsap.timeline();
    tl.fromTo(
       smMenuList,
@@ -81,7 +81,7 @@ const menuContTL = () => {
 /*===============================================
 ハンバーガーのアニメーション
 ===============================================*/
-const btnAnimTL = () => {
+const btnAnimTL = ():gsap.core.Timeline => {
    const target = document
       .getElementsByClassName("bl_hamburgerBtn_trigger")[0]
       .querySelector(".btn");
@@ -99,15 +99,15 @@ const btnAnimTL = () => {
 /*===============================================
 ボタンクリックのタイミングで発火させる
 ===============================================*/
-const commonInit = (isForward) => {
+const commonInit = (isForward:boolean):void => {
    const smMenu = document.getElementById("js_headerNav_sm");
    //テーマカラーチェンジ
    themeColorChange(isForward);
    //スクロール切替
    inertiaScrollSwitch(!isForward);
    //アクセシビリティ
-   hamburgerBtn.setAttribute("aria-expanded", isForward);
-   smMenu.setAttribute("aria-hidden", !isForward);
+   hamburgerBtn?.setAttribute("aria-expanded", isForward ? "true" : "false");
+   smMenu?.setAttribute("aria-hidden", (!isForward) ? "true" : "false");
    if (isForward) {
       //メニュー内のスクロール位置をトップに戻す
       menuAreaScrollTop();
@@ -117,10 +117,10 @@ const commonInit = (isForward) => {
 /*===============================================
 タイムライン
 ===============================================*/
-let menuAnimTL;
+let menuAnimTL:gsap.core.Timeline = gsap.timeline();
 
 if (hamburgerBtn) {
-   new Promise((resolve) => {
+   new Promise<void>((resolve) => {
       menuAnimTL = gsap.timeline({
          paused: true,
          onReverseComplete() {

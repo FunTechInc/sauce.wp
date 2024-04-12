@@ -1,13 +1,31 @@
 import { gsap } from "gsap";
-import { DURATIONVAL, EASEVAL } from "../../ts/global";
+import { DURATIONVAL, EASEVAL } from "../global";
+
+
+type HeaderSubMenuProps = {
+   btnClassName: string;
+   preventBtnClassName: string;
+   panelClassName: string;
+};
 
 export class HeaderSubMenu {
-   constructor({ btnClassName, preventBtnClassName, panelClassName }) {
-      this.btns = [...document.getElementsByClassName(btnClassName)];
-      this.preventBtns = [
-         ...document.getElementsByClassName(preventBtnClassName),
-      ];
-      this.panels = [...document.getElementsByClassName(panelClassName)];
+
+   btns: HTMLElement[];
+   preventBtns: HTMLElement[];
+   panels: HTMLElement[];
+   menuState: {
+      isView: boolean;
+      isBusy: boolean;
+      busySwitch: () => void;
+      fadeIn: (target: HTMLElement) => void;
+      fadeOut: (target: HTMLElement) => void;
+      subNavFadeOut: () => void;
+   };   
+
+   constructor({ btnClassName, preventBtnClassName, panelClassName }: HeaderSubMenuProps) {
+      this.btns = [...document.getElementsByClassName(btnClassName)] as HTMLElement[];
+      this.preventBtns = [...document.getElementsByClassName(preventBtnClassName)] as HTMLElement[];
+      this.panels = [...document.getElementsByClassName(panelClassName)] as HTMLElement[];
       this.menuState = {
          isView: false,
          isBusy: false,

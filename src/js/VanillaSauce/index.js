@@ -5,7 +5,7 @@ import { smoothScroll } from "../../ts/common/smoothScroll";
 //交差で発火するアニメーション
 import { intersectionAnimation } from "../../ts/animation/intersectionAnimation";
 //ハンバーガー
-import { smMenuToggle, hamburgerBtn } from "../header/smMenuToggle";
+import { smMenuToggle, hamburgerBtn } from "../../ts/header/smMenuToggle";
 //contactForm7対応
 import { thanksTransition } from "../pageTrans/thanksTransition";
 //スクロールトリガーの削除
