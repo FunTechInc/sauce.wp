@@ -1,14 +1,14 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { TRIGGERTIMING, DURATIONVAL, EASEVAL, STAGGERTIMING } from "../../ts/global";
+import { TRIGGERTIMING, DURATIONVAL, EASEVAL, STAGGERTIMING } from "..//global";
 
 /********************
 変数
 ********************/
 const transitionY = "4rem";
 
-export const intersectionAnimation = () => {
+export const intersectionAnimation = ():void => {
    /*===============================================
 	fadeInUp
 	===============================================*/
@@ -24,12 +24,12 @@ export const intersectionAnimation = () => {
          ScrollTrigger.batch(fadeInUp, {
             batchMax: 5,
             start: TRIGGERTIMING,
-            onEnter: (batch) =>
+            onEnter: (batch) =>            
                gsap.to(batch, {
                   y: 0,
                   autoAlpha: 1,
                   ease: `${EASEVAL}.out`,
-                  duration: DURATIONVAL,
+                  duration: DURATIONVAL,                  
                   stagger: STAGGERTIMING,
                }),
             once: true,
@@ -51,7 +51,7 @@ export const intersectionAnimation = () => {
             y: transitionY,
             autoAlpha: 0,
          });
-         const fadeInUpBlockAnim = (target) => {
+         const fadeInUpBlockAnim = (target:Element) => {
             gsap.to(target, {
                y: 0,
                autoAlpha: 1,
@@ -64,7 +64,7 @@ export const intersectionAnimation = () => {
             onEnter: (batch) => {
                batch.forEach((element, index) => {
                   setTimeout(() => {
-                     const span = [...element.querySelectorAll(".line")];
+                     const span:Element[] = [...element.querySelectorAll(".line")];
                      span.forEach((element, index) => {
                         setTimeout(() => {
                            fadeInUpBlockAnim(element);

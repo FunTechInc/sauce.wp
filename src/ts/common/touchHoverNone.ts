@@ -1,16 +1,17 @@
-import { isTouch } from "../../ts/global";
+import { isTouch } from "../global";
 
-export const touchHoverNone = () => {
+export const touchHoverNone = ():void => {      
+   
    if (isTouch()) {
-      var touch =
+      let _navigator = navigator as any; // navigatorの型定義が不完全なため (msMaxTouchPointsが存在しない)
+      const touch =
          "ontouchstart" in document.documentElement ||
-         navigator.maxTouchPoints > 0 ||
-         navigator.msMaxTouchPoints > 0;
-
+         _navigator.maxTouchPoints > 0 ||
+         _navigator.msMaxTouchPoints > 0;
       if (touch) {
          try {
             for (var si in document.styleSheets) {
-               var styleSheet = document.styleSheets[si];
+               const styleSheet = document.styleSheets[si] as any; // CSSStyleSheetの型定義が不完全なため (selectorTextが存在しない)               
                if (!styleSheet.cssRules) continue;
 
                for (var ri = styleSheet.cssRules.length - 1; ri >= 0; ri--) {

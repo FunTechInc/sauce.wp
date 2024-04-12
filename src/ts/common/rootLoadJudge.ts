@@ -1,5 +1,5 @@
-export let isLoaded = false;
-export const rootLoadJudge = () => {
+export let isLoaded:boolean = false;
+export const rootLoadJudge = ():void => {
    //DOM読み込み後にHTMLにis_DOMloadedを付与する
    window.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.add("🍦");

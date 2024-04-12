@@ -1,9 +1,9 @@
 import barba from "@barba/core";
 import barbaPrefetch from "@barba/prefetch";
 // ページ内リンク
-import { smoothScroll } from "../common/smoothScroll";
+import { smoothScroll } from "../../ts/common/smoothScroll";
 //交差で発火するアニメーション
-import { intersectionAnimation } from "../animation/intersectionAnimation";
+import { intersectionAnimation } from "../../ts/animation/intersectionAnimation";
 //ハンバーガー
 import { smMenuToggle, hamburgerBtn } from "../header/smMenuToggle";
 //contactForm7対応
@@ -25,28 +25,26 @@ import {
 import { pageLeaveAnim, pageEnterAnim } from "../pageTrans/pageTransAnim";
 import { pageTransTimer } from "../pageTrans/pageTransLoader";
 //画面サイズのCSS変数
-import { setSize } from "../common/setSize";
+import { setSize } from "../../ts/common/setSize";
 //360px以下は等倍で縮小
-import { switchViewport } from "../common/switchViewport";
+import { switchViewport } from "../../ts/common/switchViewport";
 //rootにロード判定
-import { rootLoadJudge } from "../common/rootLoadJudge";
+import { rootLoadJudge } from "../../ts/common/rootLoadJudge";
 //タッチデバイスでダブルタップ禁止
-import { doubletapNone } from "../common/doubletapNone";
+import { doubletapNone } from "../../ts/common/doubletapNone";
 //タッチデバイスでホバー無効
-import { touchHoverNone } from "../common/touchHoverNone";
+import { touchHoverNone } from "../../ts/common/touchHoverNone";
 //改行（budoux）
-import { lineBreakBudou } from "../common/lineBreak";
-//modernizrでwebp判定
-import { webpJudge } from "../common/modernizr";
+import { lineBreakBudou } from "../../ts/common/lineBreak";
 //URLに#があるときheader高をoffset
-import { hashHeaderOffset } from "../common/hashHeaderOffset";
+import { hashHeaderOffset } from "../../ts/common/hashHeaderOffset";
 //sticky判定
-import { stickyItem } from "../common/stickyItem";
+import { stickyItem } from "../../ts/common/stickyItem";
 //慣性スクロール
 import {
    inertiaScrollInit,
    inertiaScrollContent,
-} from "../common/inertiaScroll";
+} from "../../ts/common/inertiaScroll";
 inertiaScrollInit(true);
 
 /*===============================================
@@ -59,8 +57,7 @@ const onceCallback = () => {
    rootLoadJudge();
    doubletapNone();
    touchHoverNone();
-   lineBreakBudou();
-   webpJudge();
+   lineBreakBudou();   
    hashHeaderOffset();
    noLinkFunc();
    thanksTransition();

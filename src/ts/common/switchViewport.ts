@@ -1,5 +1,6 @@
-export const switchViewport = () => {
+export const switchViewport = ():void => {
    const viewport = document.querySelector('meta[name="viewport"]');
+   if (!viewport) return;
    const value =
       window.outerWidth > 360
          ? "width=device-width,initial-scale=1"

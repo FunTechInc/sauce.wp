@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import "micromodal";
-import { inertiaScrollSwitch } from "../common/inertiaScroll";
+import { inertiaScrollSwitch } from "../../ts/common/inertiaScroll";
 import { DURATIONVAL, EASEVAL } from "../../ts/global";
 
 /*===============================================

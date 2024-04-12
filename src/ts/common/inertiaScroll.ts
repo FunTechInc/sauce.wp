@@ -10,11 +10,11 @@ easing: (t) => Math.min(1 - Math.pow(1 - t, 4)),
 easing: (t) => Math.min(1 - Math.pow(1 - t, 2)),
 累乗の値を変えてる
 ===============================================*/
-let inertiaScroll = false;
-let rAFID = 0;
+let inertiaScroll = null as Lenis | null;
+let rAFID:number = 0;
 
 //初期化
-export const inertiaScrollInit = (isInit) => {
+export const inertiaScrollInit = (isInit:boolean) => {
    if (isInit) {
       inertiaScroll = new Lenis({
          duration: 0.6,
@@ -27,14 +27,14 @@ export const inertiaScrollInit = (isInit) => {
          touchMultiplier: 2,
          infinite: false,
       });
-      function raf(time) {
-         inertiaScroll.raf(time);
+      function raf(time:number) {
+         inertiaScroll?.raf(time);
          rAFID = requestAnimationFrame(raf);
       }
       rAFID = requestAnimationFrame(raf);
    } else {
       cancelAnimationFrame(rAFID);
-      inertiaScroll.destroy();
+      inertiaScroll?.destroy();
    }
 };
 
@@ -43,19 +43,19 @@ export const inertiaScrollInit = (isInit) => {
 子要素のjs_scrollContInnerが親要素のjs_scrollContWrapより高さがある場合、preventを追加する
 ===============================================*/
 export const inertiaScrollContent = () => {
-   const wrapper = [...document.getElementsByClassName("js_scrollContWrap")];
-   const setPrevent = (wrapper, inner) => {
+   const wrapper:HTMLElement[] = [...document.getElementsByClassName("js_scrollContWrap")] as HTMLElement[];
+   const setPrevent = (wrapper:HTMLElement, inner:HTMLElement) => {
       if (wrapper.clientHeight < inner.clientHeight) {
          wrapper.setAttribute("data-lenis-prevent", "");
          wrapper.style.overscrollBehavior = "contain";
       } else {
-         wrapper.removeAttribute("data-lenis-prevent", "");
+         wrapper.removeAttribute("data-lenis-prevent");
          wrapper.style.overscrollBehavior = "";
       }
    };
    if (wrapper.length) {
       wrapper.forEach((element) => {
-         const inner = element.getElementsByClassName("js_scrollContInner")[0];
+         const inner = element.getElementsByClassName("js_scrollContInner")[0] as HTMLElement;
          setPrevent(element, inner);
          [element, inner].forEach((elm) => {
             new ResizeObserver(() => {
@@ -67,11 +67,11 @@ export const inertiaScrollContent = () => {
 };
 
 //スクロールの有効無効の切替
-export const inertiaScrollSwitch = (isStart) => {
+export const inertiaScrollSwitch = (isStart:boolean) => {
    if (isStart) {
-      inertiaScroll.start();
+      inertiaScroll?.start();
    } else {
-      inertiaScroll.stop();
+      inertiaScroll?.stop();
    }
 };
 
@@ -80,10 +80,10 @@ export const inertiaScrollSwitch = (isStart) => {
 ===============================================*/
 export const preventLinkWhenScrolling = () => {
    //aタグの配列
-   const hrefArr = document.querySelectorAll("a");
+   const hrefArr:HTMLAnchorElement[] = [...document.querySelectorAll("a")];
    //prevent中判定
    let isPreventing = false;
-   const switchClass = (isAdd) => {
+   const switchClass = (isAdd: boolean) => {
       hrefArr.forEach((element) => {
          if (isAdd) {
             isPreventing = true;
@@ -95,16 +95,16 @@ export const preventLinkWhenScrolling = () => {
       });
    };
    //scroll判定
-   let isScrolling = false;
-   let timeOutID = 0;
+   let isScrolling:boolean = false;
+   let timeOutID:number = 0;
    //スクロールイベント
-   inertiaScroll.on("scroll", () => {
+   inertiaScroll?.on("scroll", () => {
       isScrolling = true;
       if (!isPreventing) {
          switchClass(true);
       }
       clearTimeout(timeOutID);
-      timeOutID = setTimeout(() => {
+      timeOutID = window.setTimeout(() => {
          isScrolling = false;
          switchClass(false);
       }, 50);

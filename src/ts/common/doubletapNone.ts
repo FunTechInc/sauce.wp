@@ -1,6 +1,6 @@
-import { isTouch } from "../../ts/global";
+import { isTouch } from "../global";
 
-export const doubletapNone = () => {
+export const doubletapNone = ():void => {
    if (isTouch()) {
       document.addEventListener(
          "dblclick",

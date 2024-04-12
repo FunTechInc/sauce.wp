@@ -3,7 +3,7 @@ import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 gsap.registerPlugin(MorphSVGPlugin);
 
 //functions
-import { inertiaScrollSwitch } from "../common/inertiaScroll";
+import { inertiaScrollSwitch } from "../../ts/common/inertiaScroll";
 import { classToggle } from "./classToggle";
 import { themeColorChange } from "./themeColorChange";
 import { focusTrapInit } from "./focusTrap";

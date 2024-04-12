@@ -1,14 +1,14 @@
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
-import { DURATIONVAL, EASEVAL } from "../../ts/global";
+import { DURATIONVAL, EASEVAL } from "../global";
 
 //ヘッダーとの間のpadding
-const paddingTop = 32;
+const paddingTop:number = 32;
 
 //posを取得
-const getPos = (target) => {
-   let headerHeight = document.querySelector("header").clientHeight;
+const getPos = (target:HTMLElement) => {
+   let headerHeight = document.querySelector("header")?.clientHeight || 0;
    const rect = target.getBoundingClientRect();
    const scrollYPos = window.pageYOffset || document.documentElement.scrollTop;
    const updatePos = rect.top + scrollYPos - headerHeight - paddingTop;
@@ -16,15 +16,17 @@ const getPos = (target) => {
 };
 
 //posまでスクロール
-const scrollFunc = (e) => {
+const scrollFunc = (e:MouseEvent):void => {
    e.preventDefault();
-   const query = e.target.getAttribute("href");
-   let target = null;
+   const _target = e.target as HTMLElement;   
+   const query = _target?.getAttribute("href") || "";
+   let target:HTMLElement | null = null;
    let pos = 0;   
    if(query === '#' || query === '' || query === undefined) {
       pos = 0;
    } else {      
       target = document.querySelector(query);
+      if(target === null) return;
       pos = getPos(target);      
    };
    gsap.to(window, {
@@ -32,6 +34,7 @@ const scrollFunc = (e) => {
       ease: `${EASEVAL}.out`,
       scrollTo: pos,
       onComplete: () => {
+         if (target === null) return;
          let range = pos - getPos(target);
          if (!(range > -10 && range < 10)) {
             scrollFunc(e);
@@ -40,11 +43,11 @@ const scrollFunc = (e) => {
    });
 };
 
-let smoothBtnArry = [];
-export const smoothScroll = (isAdd) => {
+let smoothBtnArry:HTMLElement[] = [];
+export const smoothScroll = (isAdd:boolean) => {
    if (isAdd) {
-      smoothBtnArry = [...document.getElementsByClassName("js_smoothScroll")];
-      smoothBtnArry.forEach((element) => {
+      smoothBtnArry = [...document.getElementsByClassName("js_smoothScroll")] as HTMLElement[];
+      smoothBtnArry.forEach((element) => {         
          element.addEventListener("click", scrollFunc);
       });
    } else {
