@@ -10,7 +10,7 @@ import "the-new-css-reset/css/reset.css";
 ページ毎のイベント
 ===============================================*/
 import { VanillaSauce } from "./VanillaSauce";
-import { birthdaySelect, fileInput, privacyCheck } from "./dummy";
+import { birthdaySelect, fileInput, privacyCheck } from "../ts/dummy";
 import { contactForm7Run } from "./pageTrans/contactForm7Run";
 
 const vanillaSauce = new VanillaSauce([
@@ -45,7 +45,7 @@ import { resizeReload, WINDOWSM } from "../ts/global";
 vanillaSauce.on("once", () => {
    //リサイズリロード
    resizeReload(WINDOWSM);
-   //サブメニュー
+   //サブメニュー   
    new HeaderSubMenu({
       btnClassName: "js_subNavBtn",
       preventBtnClassName: "js_subNavBtnPrevent",

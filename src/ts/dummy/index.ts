@@ -2,9 +2,9 @@
 生年月日のセレクトボックスを動的に操作する
 ===============================================*/
 export const birthdaySelect = () => {
-   let userBirthdayYear = document.getElementById("your-birth-year");
-   let userBirthdayMonth = document.getElementById("your-birth-month");
-   let userBirthdayDay = document.getElementById("your-birth-day");
+   let userBirthdayYear = document.getElementById("your-birth-year") as HTMLSelectElement;
+   let userBirthdayMonth = document.getElementById("your-birth-month") as HTMLSelectElement;
+   let userBirthdayDay = document.getElementById("your-birth-day") as HTMLSelectElement;
    if (!userBirthdayYear) return false;
 
    /**
@@ -12,10 +12,10 @@ export const birthdaySelect = () => {
     * @param {Element} elem 変更したいselectの要素
     * @param {Number} val 表示される文字と値の数値
     */
-   function createOptionForElements(elem, val) {
+   function createOptionForElements(elem:Element, val: number) {
       let option = document.createElement("option");
-      option.text = val;
-      option.value = val;
+      option.text = val.toString();
+      option.value = val.toString();
       elem.appendChild(option);
    }
 
@@ -62,8 +62,8 @@ export const birthdaySelect = () => {
 
       //選択された年月の最終日を計算
       let lastDayOfTheMonth = new Date(
-         userBirthdayYear.value,
-         userBirthdayMonth.value,
+         userBirthdayYear.value as any,
+         userBirthdayMonth.value as any,
          0
       ).getDate();
 
@@ -92,15 +92,16 @@ export const fileInput = () => {
    if (fileInputWrapper.length) {
       fileInputWrapper.forEach((element) => {
          const btn = element.querySelector("button");
-         const input = element.querySelector("input[type=file]");
+         const input = element.querySelector("input[type=file]") as HTMLInputElement;
          const fileTxt = element.getElementsByClassName(
             "js_fileInput_FileName"
-         )[0];
-         btn.addEventListener("click", () => {
-            input.click();
+         )[0] as HTMLInputElement;
+         btn?.addEventListener("click", () => {
+            input?.click();
             return false;
          });
-         input.addEventListener("change", () => {
+         input?.addEventListener("change", () => {
+            if (!input.files) return false;
             const fileName = input.files[0];
             fileTxt.innerText = `${fileName.name}`;
             fileTxt.classList.add("is_fileset");
@@ -122,16 +123,17 @@ export const privacyCheck = () => {
 
       const privacyCheckBtn = document.getElementById("js_ppCheckBtn");
 
-      submitBtn.setAttribute("disabled", "disabled");
+      
+      submitBtn?.setAttribute("disabled", "disabled");
 
-      privacyCheckBtn.addEventListener("click", () => {
+      privacyCheckBtn?.addEventListener("click", () => {
          if (submitBool.getAttribute("checked") === "checked") {
-            submitBool.removeAttribute("checked", "checked");
-            submitBtn.setAttribute("disabled", "disabled");
+            submitBool.removeAttribute("checked");
+            submitBtn?.setAttribute("disabled", "disabled");
             checkBox.classList.remove("is_checked");
          } else {
             submitBool.setAttribute("checked", "checked");
-            submitBtn.removeAttribute("disabled", "disabled");
+            submitBtn?.removeAttribute("disabled");
             checkBox.classList.add("is_checked");
          }
       });
