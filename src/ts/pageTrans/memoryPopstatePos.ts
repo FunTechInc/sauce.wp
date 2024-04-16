@@ -1,7 +1,7 @@
-const backPosArr = [];
-const forwardPosArr = [];
+const backPosArr:number[] = [];
+const forwardPosArr:number[] = [];
 
-export const memoryPopstatePos = (trigger) => {
+export const memoryPopstatePos = (trigger:any):void => {
    const scrollYPos = window.pageYOffset || document.documentElement.scrollTop;
    if (trigger === "back") {
       forwardPosArr.push(scrollYPos);
@@ -12,8 +12,8 @@ export const memoryPopstatePos = (trigger) => {
    }
 };
 
-export const pushPopstatePos = (trigger) => {
-   let scrollPos = 0;
+export const pushPopstatePos = (trigger:any):number => {
+   let scrollPos = 0;   
    if (trigger === "back") {
       scrollPos = backPosArr.pop() ?? 0;
    } else if (trigger === "forward") {

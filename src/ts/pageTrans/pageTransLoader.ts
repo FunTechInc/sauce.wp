@@ -1,11 +1,11 @@
 import { gsap } from "gsap";
-import { DURATIONVAL, EASEVAL } from "../../ts/global";
+import { DURATIONVAL, EASEVAL } from "../global";
 let count = 0;
-let timer;
+let timer:number = 0;
 const pageTransLoader = document.getElementById("js_pageTransLoader");
-export const pageTransTimer = (isStart) => {
+export const pageTransTimer = (isStart:boolean) => {
    if (isStart) {
-      timer = setInterval(() => {
+      timer = window.setInterval(() => {
          count++;
          if (count > 0) {
             gsap.to(pageTransLoader, {
@@ -21,7 +21,7 @@ export const pageTransTimer = (isStart) => {
       gsap.to(pageTransLoader, {
          autoAlpha: 0,
          y: "-1.6rem",
-         ease: `${EASEVAL}.out`,
+         ease: `${EASEVAL}.out`,         
          duration: DURATIONVAL,
       });
       clearInterval(timer);

@@ -25,7 +25,7 @@ export const isTouch = ():boolean => {
 
    if (touch_event !== undefined && 0 < touch_points) {
       return true;
-   } else {
+   } else {      
       return false;
    }
 };
@@ -46,7 +46,7 @@ export const isTablet = ():boolean => {
       return false;
    }
 };
-window.addEventListener("resize", () => {
+window.addEventListener("resize", () => {   
    isMobile();
    isTablet();
 });

@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-import { DURATIONVAL, EASEVAL } from "../../ts/global";
+import { DURATIONVAL, EASEVAL } from "../global";
 
 /*===============================================
 設定
@@ -15,9 +15,9 @@ const YPOS = 6.4;
 /*===============================================
 leave アニメーション
 ===============================================*/
-export const pageLeaveAnim = async ({ ease }) => {
-   let pageLeaveAnimTL;
-   new Promise((resolve) => {
+export const pageLeaveAnim = async ({ ease }: {ease: 'in' | 'out' | 'inOut'}) => {
+   let pageLeaveAnimTL = gsap.timeline();
+   new Promise<void>((resolve) => {
       pageLeaveAnimTL = gsap.timeline({
          paused: true,
          onComplete() {
@@ -38,7 +38,7 @@ export const pageLeaveAnim = async ({ ease }) => {
 /*===============================================
 enter アニメーション
 ===============================================*/
-export const pageEnterAnim = ({ ispopstate, pos }) => {
+export const pageEnterAnim = ({ ispopstate, pos }:{ispopstate:boolean, pos:number}):void => {
    let scrollPos = 0;
    if (ispopstate) {
       scrollPos = pos ?? 0;

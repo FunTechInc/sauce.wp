@@ -1,11 +1,15 @@
+type hookType = "once" | "every" | "before" | "afterLeave" | "beforeEnter" | "enter" | "after";
+type easeType = "in" | "out" | "inOut";
+
+
 import barba from "@barba/core";
 import barbaPrefetch from "@barba/prefetch";
 // ページ内リンク
-import { smoothScroll } from "../../ts/common/smoothScroll";
+import { smoothScroll } from "../common/smoothScroll";
 //交差で発火するアニメーション
-import { intersectionAnimation } from "../../ts/animation/intersectionAnimation";
+import { intersectionAnimation } from "../animation/intersectionAnimation";
 //ハンバーガー
-import { smMenuToggle, hamburgerBtn } from "../../ts/header/smMenuToggle";
+import { smMenuToggle, hamburgerBtn } from "../header/smMenuToggle";
 //contactForm7対応
 import { thanksTransition } from "../pageTrans/thanksTransition";
 //スクロールトリガーの削除
@@ -18,33 +22,33 @@ import { noLinkFunc } from "../pageTrans/noLinkFunc";
 import { scrollRestorationKill } from "../pageTrans/scrollRestorationKill";
 //スクロール位置を記憶する
 import {
-   memoryPopstatePos,
+   memoryPopstatePos,   
    pushPopstatePos,
 } from "../pageTrans/memoryPopstatePos";
 //ページ遷移アニメーション
 import { pageLeaveAnim, pageEnterAnim } from "../pageTrans/pageTransAnim";
 import { pageTransTimer } from "../pageTrans/pageTransLoader";
 //画面サイズのCSS変数
-import { setSize } from "../../ts/common/setSize";
+import { setSize } from "../common/setSize";
 //360px以下は等倍で縮小
-import { switchViewport } from "../../ts/common/switchViewport";
+import { switchViewport } from "../common/switchViewport";
 //rootにロード判定
-import { rootLoadJudge } from "../../ts/common/rootLoadJudge";
+import { rootLoadJudge } from "../common/rootLoadJudge";
 //タッチデバイスでダブルタップ禁止
-import { doubletapNone } from "../../ts/common/doubletapNone";
+import { doubletapNone } from "../common/doubletapNone";
 //タッチデバイスでホバー無効
-import { touchHoverNone } from "../../ts/common/touchHoverNone";
+import { touchHoverNone } from "../common/touchHoverNone";
 //改行（budoux）
-import { lineBreakBudou } from "../../ts/common/lineBreak";
+import { lineBreakBudou } from "../common/lineBreak";
 //URLに#があるときheader高をoffset
-import { hashHeaderOffset } from "../../ts/common/hashHeaderOffset";
+import { hashHeaderOffset } from "../common/hashHeaderOffset";
 //sticky判定
-import { stickyItem } from "../../ts/common/stickyItem";
+import { stickyItem } from "../common/stickyItem";
 //慣性スクロール
 import {
    inertiaScrollInit,
    inertiaScrollContent,
-} from "../../ts/common/inertiaScroll";
+} from "../common/inertiaScroll";
 inertiaScrollInit(true);
 
 /*===============================================
@@ -61,7 +65,7 @@ const onceCallback = () => {
    hashHeaderOffset();
    noLinkFunc();
    thanksTransition();
-   hamburgerBtn.addEventListener("click", () => {
+   hamburgerBtn?.addEventListener("click", () => {
       smMenuToggle();
    });
 };
@@ -80,7 +84,7 @@ const everyCallback = () => {
 /*===============================================
 ページ遷移前に毎回initさせる関数（リスナーの削除系）
 ===============================================*/
-const beforeCallback = (data) => {
+const beforeCallback = (data: any) => {
    document.documentElement.classList.add("is_transition");
    smoothScroll(false);
    scrollRestorationKill();
@@ -105,15 +109,18 @@ const afterCallback = () => {
 /*===============================================
 VanillaSauce
 ===============================================*/
-export class VanillaSauce {
-   constructor(views) {
-      this.onceCustomCallback = false;
-      this.everyCustomCallback = false;
-      this.beforeCustomCallback = false;
-      this.afterLeaveCustomCallback = false;
-      this.afterCustomCallback = false;
-      this.beforeEnterCustomCallback = false;
-      this.enterCustomCallback = false;
+export class VanillaSauce {   
+
+   private onceCustomCallback: () => void = () => {};
+   private everyCustomCallback: () => void = () => {};
+   private beforeCustomCallback: () => void = () => {};
+   private afterLeaveCustomCallback: () => void = () => {};
+   private afterCustomCallback: () => void = () => {};
+   private beforeEnterCustomCallback: (data: any) => void = () => {};
+   private enterCustomCallback: () => void = () => {};
+   private viewsCustomCallback: any;
+
+   constructor(views: any) {      
       this.viewsCustomCallback = views;
    }
    init() {
@@ -152,7 +159,7 @@ export class VanillaSauce {
          preventRunning: true,
          //10秒以上読み込みに時間がかかるとエラーを返す
          timeout: 10000,
-         sync: false,
+         // sync: false,
          transitions: [
             {
                //ブラウザの初回ロード
@@ -168,7 +175,7 @@ export class VanillaSauce {
                },
                //leaveとenterアニメーションを同期させる
                async leave(data) {
-                  let ease = "in";
+                  let ease: easeType = "in";
                   if (document.body.classList.contains("is_smMenu_open")) {
                      //TLのreverseCompleteでresolveが帰ってくる
                      await smMenuToggle();
@@ -189,13 +196,13 @@ export class VanillaSauce {
                   beforeEnterCustomCallback && beforeEnterCustomCallback(next);
                },
                enter(data) {
-                  enterCustomCallback && enterCustomCallback();
+                  enterCustomCallback && enterCustomCallback();                  
                   pageTransTimer(false);
                   //記憶させた位置を呼び出して、enterAnimationに渡す
                   pageEnterAnim({
                      ispopstate: ispopstate,
                      pos: pushPopstatePos(data.trigger),
-                  });
+                  });                  
                   //popstate判定をfalseに戻す
                   ispopstate = false;
                },
@@ -214,7 +221,7 @@ export class VanillaSauce {
          views: viewsCustomCallback,
       });
    }
-   on(hook, event) {
+   on(hook: hookType, event: () => void) {
       switch (hook) {
          case "once":
             this.onceCustomCallback = event;

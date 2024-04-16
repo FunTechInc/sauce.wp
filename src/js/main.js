@@ -9,9 +9,9 @@ import "the-new-css-reset/css/reset.css";
 /*===============================================
 ページ毎のイベント
 ===============================================*/
-import { VanillaSauce } from "./VanillaSauce";
+import { VanillaSauce } from "../ts/VanillaSauce";
 import { birthdaySelect, fileInput, privacyCheck } from "../ts/dummy";
-import { contactForm7Run } from "./pageTrans/contactForm7Run";
+import { contactForm7Run } from "../ts/pageTrans/contactForm7Run";
 
 const vanillaSauce = new VanillaSauce([
    {
@@ -33,13 +33,13 @@ const vanillaSauce = new VanillaSauce([
       //dummy
       namespace: "dummy",
       beforeEnter() {},
-   },
+   }
 ]);
 
 /*===============================================
 once
 ===============================================*/
-import { HeaderSubMenu } from "../../ts/header/subMenu";
+import { HeaderSubMenu } from "../ts/header/subMenu";
 import { resizeReload, WINDOWSM } from "../ts/global";
 
 vanillaSauce.on("once", () => {

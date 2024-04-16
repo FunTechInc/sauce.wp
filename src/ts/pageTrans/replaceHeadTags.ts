@@ -1,4 +1,4 @@
-export const replaceHeadTags = (target) => {
+export const replaceHeadTags = (target:any):void => {
    const head = document.head;
    const targetHead = target.html.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0];
    const newPageHead = document.createElement("head");
