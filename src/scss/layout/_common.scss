@@ -22,13 +22,13 @@ common
 // }
 
 @mixin inner($width) {
-   width: min(100% - $spacing-3, $width);
+   width: min(100% - $spacing-32, $width);
    margin: 0 auto;
 }
 
 .ly_inner {
-   @include inner(128rem);
+   @include inner($spacing-1280);
 }
 .ly_inner_narrow {
-   @include inner(112rem);
+   @include inner($spacing-1120);
 }

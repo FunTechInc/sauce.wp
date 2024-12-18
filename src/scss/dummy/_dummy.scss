@@ -10,19 +10,19 @@ dummy
 }
 .sampleView {
    h1 {
-      font-size: 3.2rem;
+      font-size: $fontsize-32;
       font-weight: bold;
       text-align: center;
-      margin-bottom: $spacing-6;
+      margin-bottom: $spacing-64;
    }
    h3 {
-      margin-top: $spacing-4;
+      margin-top: $spacing-40;
       text-align: center;
    }
    ul {
       li {
          &:not(:first-child) {
-            margin-top: $spacing-3;
+            margin-top: $spacing-32;
          }
       }
    }
@@ -30,10 +30,10 @@ dummy
       text-align: center;
       color: $color-key;
       font-weight: bold;
-      font-size: $fontsize-2;
-      margin-top: $spacing-2;
+      font-size: $fontsize-16;
+      margin-top: $spacing-24;
    }
-   width: min(100%, 64rem);
+   width: min(100%, $spacing-640);
    margin: 0 auto;
 }
 

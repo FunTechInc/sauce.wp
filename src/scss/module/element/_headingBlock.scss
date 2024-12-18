@@ -5,9 +5,9 @@ heading
 ===============================================*/
 .el_headingBlock {
    &_title {
-      font-size: $fontsize-3;
-      @include lineHeightCrop($leading-normal);
-      line-height: $leading-normal;
+      font-size: $fontsize-32;
+      @include lineHeightCrop($leading-17);
+      line-height: $leading-17;
    }
 
    &.__center {
@@ -20,7 +20,7 @@ heading
 
    &.__fff {
       > * {
-         color: #fff !important;
+         color: $color-wh !important;
       }
    }
 }
@@ -32,28 +32,28 @@ heading
    }
 
    //marginBottom
-   &.__mbLv1 {
-      margin-bottom: $spacing-1;
+   &.__mbLv16 {
+      margin-bottom: $spacing-16;
    }
-   &.__mbLv2 {
-      margin-bottom: $spacing-2;
+   &.__mbLv24 {
+      margin-bottom: $spacing-24;
    }
-   &.__mbLv3 {
-      margin-bottom: $spacing-3;
+   &.__mbLv32 {
+      margin-bottom: $spacing-32;
    }
-   &.__mbLv4 {
-      margin-bottom: $spacing-4;
+   &.__mbLv40 {
+      margin-bottom: $spacing-40;
    }
-   &.__mbLv5 {
-      margin-bottom: $spacing-5;
+   &.__mbLv56 {
+      margin-bottom: $spacing-56;
    }
-   &.__mbLv6 {
-      margin-bottom: $spacing-6;
+   &.__mbLv64 {
+      margin-bottom: $spacing-64;
    }
-   &.__mbLv7 {
-      margin-bottom: $spacing-7;
+   &.__mbLv72 {
+      margin-bottom: $spacing-72;
    }
-   &.__mbLv8 {
-      margin-bottom: $spacing-8;
+   &.__mbLv80 {
+      margin-bottom: $spacing-80;
    }
 }

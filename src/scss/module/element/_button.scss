@@ -4,13 +4,15 @@
 button
 ===============================================*/
 .el_btn {
-   font-size: $fontsize-2;
-   width: $spacing-12;
-   line-height: $spacing-6;
-   height: $spacing-6;
+   color: $color-wh;
    background-color: $color-key;
-   border: 2px solid $color-key;
+   border: $border-2 solid $color-key;
+   font: {
+      size: $fontsize-16;
+      weight: 700;
+   }
+   width: $spacing-120;
+   line-height: $spacing-64;
+   height: $spacing-64;
    text-align: center;
-   color: #fff;
-   font-weight: bold;
 }

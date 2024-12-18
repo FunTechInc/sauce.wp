@@ -1,0 +1,21 @@
+@use "../../global" as *;
+
+/*===============================================
+logo
+===============================================*/
+.el_logo {
+   font: {
+      size: 0;
+   }
+   position: relative;
+   z-index: 10;
+   @include transition;
+   transition-property: opacity;
+
+   a {
+
+      @include hover {
+         opacity: .7;
+      }
+   }
+}

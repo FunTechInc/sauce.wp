@@ -5,28 +5,28 @@ section
 ===============================================*/
 .ly_sect {
    //marginTop
-   &.__mtLv1 {
-      margin-top: $spacing-1;
+   &.__mtLv16 {
+      margin-top: $spacing-16;
    }
-   &.__mtLv2 {
-      margin-top: $spacing-2;
+   &.__mtLv24 {
+      margin-top: $spacing-24;
    }
-   &.__mtLv3 {
-      margin-top: $spacing-3;
+   &.__mtLv32 {
+      margin-top: $spacing-32;
    }
-   &.__mtLv4 {
-      margin-top: $spacing-4;
+   &.__mtLv40 {
+      margin-top: $spacing-40;
    }
-   &.__mtLv5 {
-      margin-top: $spacing-5;
+   &.__mtLv56 {
+      margin-top: $spacing-56;
    }
-   &.__mtLv6 {
-      margin-top: $spacing-6;
+   &.__mtLv64 {
+      margin-top: $spacing-64;
    }
-   &.__mtLv7 {
-      margin-top: $spacing-7;
+   &.__mtLv72 {
+      margin-top: $spacing-72;
    }
-   &.__mtLv8 {
-      margin-top: $spacing-8;
+   &.__mtLv80 {
+      margin-top: $spacing-80;
    }
 }

@@ -4,11 +4,13 @@
    visibility: visible;
    width: auto;
    height: auto;
+   display: block;
 }
 @mixin unDisplay() {
    visibility: hidden;
    width: 0;
    height: 0;
+   display: none
 }
 
 /*===============================================
@@ -63,7 +65,13 @@ br {
    &.__md {
       display: none;
       @include mq(md) {
-         display: block;
+         display: inline-block;
+      }
+   }
+   &.__sm {
+      display: none;
+      @include mq(sm) {
+         display: inline-block;
       }
    }
 }

@@ -14,10 +14,10 @@ header layout
       height: var(--headerHeight);
       display: flex;
       justify-content: space-between;
-      width: calc(100% - $spacing-8);
+      width: calc(100% - $spacing-80);
       margin: 0 auto;
       @include mq(sm) {
-         width: calc(100% - $spacing-3);
+         width: calc(100% - $spacing-32);
       }
    }
 }
@@ -26,16 +26,7 @@ header layout
 header logo
 ===============================================*/
 .bl_headerLogo {
-   @include transition;
-   width: 24rem;
-   font-size: 0;
-   transition-property: opacity;
-   position: relative;
-   z-index: 10;
-
-   @include hover {
-      opacity: 0.7;
-   }
+   width: $spacing-240;
 }
 
 /*===============================================
@@ -45,7 +36,7 @@ header nav
    @include mq(lg) {
       display: none;
    }
-   margin-right: $spacing-4;
+   margin-right: $spacing-40;
    position: relative;
    z-index: 0;
 
@@ -60,10 +51,10 @@ header nav
       .bl_headerNav_btn {
          position: relative;
          height: var(--headerHeight);
-         padding: 0 $spacing-1;
+         padding: 0 $spacing-16;
          color: $color-base;
          font-weight: bold;
-         font-size: $fontsize-1;
+         font-size: $fontsize-14;
          line-height: var(--headerHeight);
          letter-spacing: 0;
 
@@ -82,12 +73,12 @@ header nav
 }
 .bl_subMenu_child {
    position: absolute;
-   width: 16rem;
-   height: 16rem;
+   width: $spacing-16;
+   height: $spacing-16;
    background-color: $color-key;
-   top: calc(100% - $spacing-1);
-   right: -8rem;
-   left: -8rem;
+   top: calc(100% - $spacing-16);
+   right: -$spacing-8;
+   left: -$spacing-8;
    margin: auto;
    opacity: 0;
    pointer-events: none;
@@ -118,7 +109,7 @@ header nav
 
    &_inner {
       width: 100%;
-      padding: $spacing-12 $spacing-1;
+      padding: $spacing-120 $spacing-16;
    }
 
    &_listWrapper {
@@ -131,16 +122,16 @@ header nav
          line-height: 1;
 
          &:not(:first-child) {
-            margin-top: $spacing-4;
+            margin-top: $spacing-40;
          }
       }
       .bl_headerNav_sm_btn {
          display: inline-block;
          font-weight: bold;
-         font-size: $fontsize-6;
+         font-size: $fontsize-64;
 
          @include mq(sm) {
-            font-size: $fontsize-3;
+            font-size: $fontsize-32;
          }
 
          @include hover {
@@ -179,8 +170,8 @@ header hamburger
 .bl_hamburgerBtn {
    position: relative;
    z-index: 9999;
-   width: $spacing-5;
-   height: $spacing-5;
+   width: $spacing-56;
+   height: $spacing-56;
    background-color: $color-key;
    border-radius: 50%;
    margin: auto;
@@ -196,7 +187,7 @@ header hamburger
       svg {
          width: 100%;
          path {
-            fill: #fff;
+            fill: $color-wh;
          }
       }
    }
@@ -213,7 +204,7 @@ header hamburger
          opacity: 0;
       }
       .bl_headerNav_sm_btn {
-         color: #fff;
+         color: $color-wh;
       }
    }
    .is_smMenu_open & {

@@ -34,22 +34,37 @@ $unit: inherit;
 spacing
 ===============================================*/
 $spacing-0: if($designRoot==1, 0, 0);
-$spacing-half: if($designRoot==1, 0.8rem, 8px);
-$spacing-mini: if($designRoot==1, 1.2rem, 12px);
-$spacing-1: if($designRoot==1, 1.6rem, 16px);
-$spacing-2: if($designRoot==1, 2.4rem, 24px);
-$spacing-3: if($designRoot==1, 3.2rem, 32px);
-$spacing-4: if($designRoot==1, 4rem, 40px);
-$spacing-4half: if($designRoot==1, 4.8rem, 48px);
-$spacing-5: if($designRoot==1, 5.6rem, 56px);
-$spacing-6: if($designRoot==1, 6.4rem, 64px);
-$spacing-7: if($designRoot==1, 7.2rem, 72px);
-$spacing-8: if($designRoot==1, 8rem, 80px);
-$spacing-8half: if($designRoot==1, 8.8rem, 88px);
-$spacing-9: if($designRoot==1, 9.6rem, 96px);
-$spacing-10: if($designRoot==1, 10.4rem, 104px);
-$spacing-11: if($designRoot==1, 11.2rem, 112px);
-$spacing-12: if($designRoot==1, 12rem, 120px);
+$spacing-2: if($designRoot==1, .2rem, 2px);
+$spacing-3: if($designRoot==1, .3rem, 3px);
+$spacing-4: if($designRoot==1, .4rem, 4px);
+$spacing-5: if($designRoot==1, .5rem, 5px);
+$spacing-6: if($designRoot==1, .6rem, 6px);
+$spacing-8: if($designRoot==1, .8rem, 8px);
+$spacing-10: if($designRoot==1, 1rem, 10px);
+$spacing-12: if($designRoot==1, 1.2rem, 12px);
+$spacing-14: if($designRoot==1, 1.4rem, 14px);
+$spacing-15: if($designRoot==1, 1.5rem, 15px);
+$spacing-16: if($designRoot==1, 1.6rem, 16px);
+$spacing-20: if($designRoot==1, 2rem, 20px);
+$spacing-22: if($designRoot==1, 2.2rem, 22px);
+$spacing-24: if($designRoot==1, 2.4rem, 24px);
+$spacing-26: if($designRoot==1, 2.6rem, 26px);
+$spacing-32: if($designRoot==1, 3.2rem, 32px);
+$spacing-40: if($designRoot==1, 4rem, 40px);
+$spacing-48: if($designRoot==1, 4.8rem, 48px);
+$spacing-56: if($designRoot==1, 5.6rem, 56px);
+$spacing-64: if($designRoot==1, 6.4rem, 64px);
+$spacing-72: if($designRoot==1, 7.2rem, 72px);
+$spacing-80: if($designRoot==1, 8rem, 80px);
+$spacing-88: if($designRoot==1, 8.8rem, 88px);
+$spacing-96: if($designRoot==1, 9.6rem, 96px);
+$spacing-104: if($designRoot==1, 1.4rem, 104px);
+$spacing-112: if($designRoot==1, 11.2rem, 112px);
+$spacing-120: if($designRoot==1, 12rem, 120px);
+$spacing-240: if($designRoot==1, 24rem, 240px);
+$spacing-640: if($designRoot==1, 64rem, 640px);
+$spacing-1120: if($designRoot==1, 112rem, 1120px);
+$spacing-1280: if($designRoot==1, 128rem, 1280px);
 
 /*===============================================
 ratio
@@ -66,29 +81,39 @@ $r-4-3: 75%;
 font
 ===============================================*/
 //font size
-$fontsize-0: if($designRoot==1, 1.2rem, 12px);
-$fontsize-1: if($designRoot==1, 1.4rem, 14px);
-$fontsize-2: if($designRoot==1, 1.6rem, 16px);
-$fontsize-3: if($designRoot==1, 3.2rem, 32px);
-$fontsize-4: if($designRoot==1, 4rem, 40px);
-$fontsize-5: if($designRoot==1, 5.6rem, 56px);
-$fontsize-6: if($designRoot==1, 6.4rem, 64px);
-$fontsize-7: if($designRoot==1, 7.2rem, 72px);
-$fontsize-8: if($designRoot==1, 8rem, 80px);
-$fontsize-9: if($designRoot==1, 9.6rem, 96px);
+$fontsize-12: if($designRoot==1, 1.2rem, 12px);
+$fontsize-14: if($designRoot==1, 1.4rem, 14px);
+$fontsize-16: if($designRoot==1, 1.6rem, 16px);
+$fontsize-20: if($designRoot==1, 2.0rem, 20px);
+$fontsize-22: if($designRoot==1, 2.2rem, 22px);
+$fontsize-24: if($designRoot==1, 2.4rem, 24px);
+$fontsize-32: if($designRoot==1, 3.2rem, 32px);
+$fontsize-40: if($designRoot==1, 4rem, 40px);
+$fontsize-48: if($designRoot==1, 4.8rem, 48px);
+$fontsize-56: if($designRoot==1, 5.6rem, 56px);
+$fontsize-64: if($designRoot==1, 6.4rem, 64px);
+$fontsize-72: if($designRoot==1, 7.2rem, 72px);
+$fontsize-80: if($designRoot==1, 8rem, 80px);
+$fontsize-88: if($designRoot==1, 8.8rem, 88px);
+$fontsize-96: if($designRoot==1, 9.6rem, 96px);
 
-// line-height @include lineHeightCrop($leading-loose);
-$leading-none: 1 !default;
-$leading-x-tight: 1.3 !default;
-$leading-tight: 1.5 !default;
-$leading-snug: 1.6 !default;
-$leading-normal: 1.7 !default;
-$leading-relaxed: 1.8 !default;
-$leading-loose: 2 !default;
-$leading-x-loose: 2.2 !default;
+// line-height @include lineHeightCrop($leading-20);
+$leading-10: 1 !default;
+$leading-12: 1.2 !default;
+$leading-13: 1.3 !default;
+$leading-14: 1.4 !default;
+$leading-15: 1.5 !default;
+$leading-16: 1.6 !default;
+$leading-17: 1.7 !default;
+$leading-18: 1.8 !default;
+$leading-20: 2 !default;
+$leading-22: 2.2 !default;
+$leading-24: 2.4 !default;
+$leading-26: 2.6 !default;
+$leading-28: 2.8 !default;
 
 // letter-spacing
-$letter-spacing-base: 0.05em !default;
+$letter-spacing-base: .05em !default;
 
 @font-face {
    font-family: "Noto Sans JP";
@@ -110,8 +135,7 @@ $letter-spacing-base: 0.05em !default;
 }
 
 // fontfamily
-$fontfamily-base: "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-   "NotoSansCJKjp", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+$fontfamily-base: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'NotoSansCJKjp', 'Yu Gothic', YuGothic, Verdana, Meiryo, 'M+ 1p', sans-serif;
 $fontfamily-eng: "Noto Sans JP", serif;
 
 /*===============================================
@@ -124,12 +148,36 @@ $color-twitter: #1da1f2;
 $color-facebook: #3b5998;
 $color-insta: #e1306c;
 $FunTech: #c34e00;
-$vanilla: #fef6ed;
-$vanillaBase: #2b1a24;
-$vanillaKey: #2b1a24;
 //colorRegulation
-$color-base: $vanillaBase;
-$color-key: $vanillaKey;
-$color-bg: #fff;
+$color-base: #2b1a24;
+$color-key: #2b1a24;
+$color-wh: #fff;
 $color-grey: #f2f2f2;
 $color-bg2: #f7f8fb;
+
+/*===============================================
+border
+===============================================*/
+//border
+$border-1: if($designRoot==1, .1rem, 1px);
+$border-2: if($designRoot==1, .2rem, 2px);
+
+//border radius
+$borderradius-1: if($designRoot==1, .1rem, 1px);
+$borderradius-2: if($designRoot==1, .2rem, 2px);
+$borderradius-3: if($designRoot==1, .3rem, 3px);
+$borderradius-4: if($designRoot==1, .4rem, 4px);
+$borderradius-6: if($designRoot==1, .6rem, 6px);
+$borderradius-8: if($designRoot==1, .8rem, 8px);
+$borderradius-12: if($designRoot==1, 1.2rem, 12px);
+$borderradius-16: if($designRoot==1, 1.6rem, 16px);
+$borderradius-18: if($designRoot==1, 1.8rem, 18px);
+$borderradius-20: if($designRoot==1, 2rem, 20px);
+$borderradius-24: if($designRoot==1, 2.4rem, 24px);
+$borderradius-32: if($designRoot==1, 3.2rem, 32px);
+$borderradius-40: if($designRoot==1, 4rem, 40px);
+$borderradius-48: if($designRoot==1, 4.8rem, 48px);
+$borderradius-50: 50%;
+$borderradius-72: if($designRoot==1, 7.2rem, 72px);
+$borderradius-56: if($designRoot==1, 5.6rem, 56px);
+$borderradius-80: if($designRoot==1, 8rem, 80px);

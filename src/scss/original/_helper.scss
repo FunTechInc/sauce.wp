@@ -10,7 +10,7 @@ asterisk
       color: red;
       content: "*";
       line-height: 1;
-      @include absolute(0, auto, auto, -10px);
+      @include absolute(0, auto, auto, -$spacing-10);
    }
 }
 
@@ -34,5 +34,81 @@ iframe
    }
    &.__square {
       padding-top: $r-square;
+   }
+}
+
+/*===============================================
+text align
+===============================================*/
+.hp_tac {
+   text-align: center;
+}
+
+.hp_tal {
+   text-align: left;
+}
+
+.hp_tar {
+   text-align: right;
+}
+
+/*===============================================
+flex
+===============================================*/
+.hp_flex {
+   display: flex;
+}
+
+.hp_flex_vert__center {
+   align-items: center;
+}
+
+.hp_flex_vert__top {
+   align-items: flex-start;
+}
+
+.hp_flex_horiz__center {
+   justify-content: center;
+}
+
+.hp_flex_horiz__right {
+   justify-content: flex-end;
+}
+
+.hp_flex__wrap {
+   flex-wrap: wrap;
+}
+
+/*===============================================
+mdScroll
+===============================================*/
+.hp_mdScroll {
+
+   @include mq(md){
+      padding-bottom: $spacing-16;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+         height: $spacing-8;
+      }
+      /*スクロールバー全体の背景*/
+      &::-webkit-scrollbar-track {
+         background: {
+            color: $color-wh;
+         }
+         border-radius: $spacing-8;
+      }
+      /*スクロールバーの動く部分*/
+      &::-webkit-scrollbar-thumb {
+         background: {
+            color: $color-key;
+         }
+         border: none;
+         border-radius: $spacing-8;
+      }
+      // /*スクロールバーの動く部分のホバー（マウスオーバー）*/
+      // &::-webkit-scrollbar-thumb:hover {
+      //    background: #999;
+      // }
    }
 }

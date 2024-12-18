@@ -10,7 +10,7 @@
    --liquid-htmlroot: calc(
       calc(var(--vw, 1vw) * 100) / var(--liquid-lgDesignRatio)
    );
-   --liquid-bodyroot: 1.6rem;
+   --liquid-bodyroot: #{$fontsize-16};
 
    @include mq(md) {
       --liquid-htmlroot: calc(
@@ -27,7 +27,7 @@
    /*===============================================
 	②solid design
 	===============================================*/
-   --solid-root: 16px;
+   --solid-root: #{$fontsize-16};
 
    /*===============================================
 	③mobilefirst design
@@ -44,10 +44,10 @@
    /*===============================================
 	headerHeight
 	===============================================*/
-   --headerHeight: #{$spacing-8};
+   --headerHeight: #{$spacing-80};
 
    @include mq(sm) {
-      --headerHeight: #{$spacing-8};
+      --headerHeight: #{$spacing-80};
    }
 }
 
@@ -55,25 +55,24 @@
 html body
 ===============================================*/
 body {
-   background: {
-      color: $vanilla;
-   }
-
    color: $color-base;
-
-   font: {
-      family: $fontfamily-base;
-      style: normal;
-      weight: normal;
-   }
-
    letter-spacing: $letter-spacing-base;
-   line-height: $leading-none;
+   line-height: $leading-16;
    //改行
    overflow-wrap: break-word;
    //kerning
    font-feature-settings: "palt";
    text-size-adjust: 100%;
+   font-smoothing: antialiased;
+   text-size-adjust: 100%;
+   -webkit-font-smoothing: antialiased;
+   -webkit-text-size-adjust: 100%;
+   -moz-font-smoothing: antialiased;
+   -moz-text-size-adjust: 100%;
+   -ms-font-smoothing: antialiased;
+   -ms-text-size-adjust: 100%;
+   -o-font-smoothing: antialiased;
+   -o-text-size-adjust: 100%;
 }
 
 html {
@@ -146,7 +145,7 @@ button {
 
    /* タブ移動時 */
    &:focus-visible {
-      outline: -webkit-focus-ring-color auto 1px;
+      outline: -webkit-focus-ring-color auto $border-1;
 
       @include mq(md) {
          outline: none;
@@ -191,10 +190,10 @@ html {
    -webkit-tap-highlight-color: transparent;
 }
 
-body {
-   padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
-      env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
-}
+// body {
+//    padding: env(safe-area-inset-top, $spacing-20) env(safe-area-inset-right, $spacing-20)
+//       env(safe-area-inset-bottom, $spacing-20) env(safe-area-inset-left, $spacing-20);
+// }
 
 img {
    border: 0;
@@ -235,6 +234,24 @@ form {
 
 svg {
    overflow: visible;
+}
+
+sup {
+	font: {
+      size: 60%;
+   }
+	position: relative;
+	top: $spacing-3;
+	vertical-align: top;
+}
+
+sub {
+	font: {
+      size: 60%;
+   }
+	position: relative;
+	bottom: $spacing-3;
+	vertical-align: bottom;
 }
 
 /*===============================================

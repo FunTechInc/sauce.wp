@@ -14,23 +14,23 @@
    //初期値
    visibility: hidden;
    opacity: 0;
-   transform: translateY($spacing-1);
+   transform: translateY($spacing-16);
 
    &_elm,
    &:after {
       border-radius: 50%;
-      width: $spacing-3;
-      height: $spacing-3;
+      width: $spacing-32;
+      height: $spacing-32;
    }
 
    &_elm {
       margin: 0 auto;
       position: relative;
       text-indent: -9999em;
-      border-top: 0.1rem solid rgba($color-key, 0.2);
-      border-right: 0.1rem solid rgba($color-key, 0.2);
-      border-bottom: 0.1rem solid rgba($color-key, 0.2);
-      border-left: 0.1rem solid $color-key;
+      border-top: $border-1 solid rgba($color-key, 0.2);
+      border-right: $border-1 solid rgba($color-key, 0.2);
+      border-bottom: $border-1 solid rgba($color-key, 0.2);
+      border-left: $border-1 solid $color-key;
       -webkit-transform: translateZ(0);
       -ms-transform: translateZ(0);
       transform: translateZ(0);

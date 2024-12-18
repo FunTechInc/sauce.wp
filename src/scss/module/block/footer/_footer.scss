@@ -5,12 +5,12 @@ footer
 ===============================================*/
 .bl_footer {
    background-color: $color-key;
-   padding: $spacing-3 0;
+   padding: $spacing-32 0;
    width: 100%;
 }
 .bl_footerCopyright {
-   color: #fff;
+   color: $color-wh;
    display: block;
-   font-size: $fontsize-1;
+   font-size: $fontsize-14;
    text-align: center;
 }
