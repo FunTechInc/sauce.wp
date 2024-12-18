@@ -1,7 +1,13 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+   exit;
+}
+?>
 <header class="bl_header" id="js_header">
 	<div class="bl_header_inner">
 		<h1 class="bl_headerLogo">
-			<a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/dummy/vanilla.png" alt="title" loading="lazy" /></a>
+			<a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/dummy/vanilla.png" alt="title" loading="lazy"></a>
 		</h1>
 		<div class="bl_headerNav_wrapper">
 			<nav class="bl_headerNav">
@@ -21,7 +27,7 @@
 			<button class="bl_hamburgerBtn" type="button" aria-controls="js_headerNav_sm" aria-expanded="false" id="js_hamburgerBtn">
 				<div class="bl_hamburgerBtn_trigger">
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 23 12" preserveAspectRatio="none" style="enable-background: new 0 0 23 12" xml:space="preserve">
-						<path class="btn" d="M22 2H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1zM22 7H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1zM22 12H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1z" />
+						<path class="btn" d="M22 2H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1zM22 7H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1zM22 12H1c-.6 0-1-.4-1-1s.4-1 1-1h21c.6 0 1 .4 1 1s-.4 1-1 1z">
 					</svg>
 				</div>
 			</button>
@@ -46,7 +52,7 @@
 	</nav>
 	<div class="bl_headerNav_sm_bg" id="js_smMenuBg">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" style="enable-background: new 0 0 1000 1000" xml:space="preserve" preserveAspectRatio="none">
-			<path class="bg_mask" d="M0,0 L1000,0 L1000,0 L0,0 L0,0 Z" />
+			<path class="bg_mask" d="M0,0 L1000,0 L1000,0 L0,0 L0,0 Z">
 		</svg>
 	</div>
 </header>

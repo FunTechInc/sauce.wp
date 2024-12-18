@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+   exit;
+}
+get_header();
+?>
 <main class="ly_main">
 	<div class="pg_form js_namespace" id="pg_form" data-barba="container" data-barba-namespace="formdemo">
 		<div class="ly_inner">

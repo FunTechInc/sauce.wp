@@ -1,5 +1,11 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+   exit;
+}
+?>
 <!DOCTYPE html>
-<html lang="ja">
+<html <?php language_attributes(); ?>>
 	<?php include("components/common/head.php"); ?>
 
 	<body data-barba="wrapper">

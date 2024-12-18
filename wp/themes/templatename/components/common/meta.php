@@ -1,4 +1,7 @@
 <?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) )
+   exit;
 
 /*
 =====================================================================
@@ -170,30 +173,34 @@ function nowUrl(){
 }
 
 ?>
-<meta format-detection="telephone=no">
+<meta name="format-detection" content="telephone=no">
 <!-- robots -->
+<?php if(is_category(1)) : ?>
+<meta name="robots" content="none">
+<?php else: ?>
 <meta name="robots" content="<?php metaRobotSet(); ?>">
+<?php endif; ?>
 <!-- meta -->
 <title><?php metaTitleSet(); ?></title>
-<meta name="description" content="<?php metaDescriptionSet(); ?>" />
+<meta name="description" content="<?php metaDescriptionSet(); ?>">
 <link rel="canonical" href="<?php echo nowUrl(); ?>">
 <meta name="keywords" content="">
 <!-- OGP -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="<?php metaTitleSet(); ?>" />
-<meta property="og:description" content="<?php metaDescriptionSet(); ?>" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="<?php metaTitleSet(); ?>">
+<meta property="og:description" content="<?php metaDescriptionSet(); ?>">
 <meta property="og:image" content="<?php echo metaOGPSet(); ?>">
-<meta property="og:url" content="<?php echo nowUrl(); ?>" />
-<meta property="og:image:secure_url" content="<?php echo metaOGPSet(); ?>" />
-<meta property="og:site_name" content="<?php metaDescriptionSet(); ?>" />
-<meta property="og:locale" content="ja_JP" />
+<meta property="og:url" content="<?php echo nowUrl(); ?>">
+<meta property="og:image:secure_url" content="<?php echo metaOGPSet(); ?>">
+<meta property="og:site_name" content="<?php metaDescriptionSet(); ?>">
+<meta property="og:locale" content="ja_JP">
 <!-- twitter card -->
-<meta name="twitter:card" content="<?php metaTwitterCard(); ?>" />
-<meta name="twitter:title" content="<?php metaTitleSet(); ?>" />
-<meta name="twitter:description" content="<?php metaDescriptionSet(); ?>" />
-<meta name="twitter:image" content="<?php echo metaOGPSet(); ?>" />
+<meta name="twitter:card" content="<?php metaTwitterCard(); ?>">
+<meta name="twitter:title" content="<?php metaTitleSet(); ?>">
+<meta name="twitter:description" content="<?php metaDescriptionSet(); ?>">
+<meta name="twitter:image" content="<?php echo metaOGPSet(); ?>">
 <!-- facebook card -->
-<!-- <meta name="facebook-domain-verification" content="" /> -->
+<!-- <meta name="facebook-domain-verification" content=""> -->
 <!-- favicon -->
 <link rel="icon" href="<?php metaFavicon(); ?>">
 <link rel="apple-touch-icon" sizes="72x72" href="<?php metaAppletouchIcon(); ?>">

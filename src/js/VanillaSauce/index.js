@@ -6,8 +6,6 @@ import { smoothScroll } from "../common/smoothScroll";
 import { intersectionAnimation } from "../animation/intersectionAnimation";
 //ハンバーガー
 import { smMenuToggle, hamburgerBtn } from "../header/smMenuToggle";
-//contactForm7対応
-import { thanksTransition } from "../pageTrans/thanksTransition";
 //スクロールトリガーの削除
 import { allTriggerKill } from "../pageTrans/allTriggerKill";
 //ヘッドタグの差し替え
@@ -63,7 +61,6 @@ const onceCallback = () => {
    webpJudge();
    hashHeaderOffset();
    noLinkFunc();
-   thanksTransition();
    hamburgerBtn.addEventListener("click", () => {
       smMenuToggle();
    });

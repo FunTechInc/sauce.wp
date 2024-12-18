@@ -6,6 +6,23 @@
 /*
 =====================================================================
 =====================================================================
+通知設定
+=====================================================================
+=====================================================================
+*/
+
+// Disable auto-update emails.
+add_filter( 'auto_core_update_send_email', '__return_false' );
+
+// Disable auto-update emails for plugins.
+add_filter( 'auto_plugin_update_send_email', '__return_false' );
+
+// Disable auto-update emails for themes.
+add_filter( 'auto_theme_update_send_email', '__return_false' );
+
+/*
+=====================================================================
+=====================================================================
 common
 =====================================================================
 =====================================================================
@@ -13,6 +30,15 @@ common
 
 // wp_headの余白をなくす
 add_filter( 'show_admin_bar', '__return_false' );
+
+// WordPressのauthor情報を非表示にする
+function author_archive_redirect() {
+	if( is_author() ) {
+		wp_redirect( home_url());
+		exit;
+   }
+}
+add_action( 'template_redirect', 'author_archive_redirect' );
 
 /*
 =====================================================================
@@ -29,7 +55,7 @@ add_action('wp_enqueue_scripts', function() {
 		wp_deregister_script('jquery');
 		wp_dequeue_style('global-styles');
 	}
-}); 
+});
 
 // WordPressバージョン出力metaタグ非表示
 remove_action('wp_head', 'wp_generator');
@@ -109,8 +135,8 @@ function removePost(){
 */
 
 function postDate() {
-    global $previousday;
-    $previousday = '';
+	global $previousday;
+	$previousday = '';
 }
 add_action( 'the_post', 'postDate' );
 

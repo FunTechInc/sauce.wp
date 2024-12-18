@@ -15,13 +15,13 @@ function create_pages_and_setting() {
     $pages_array = [
         ['title'=>'ABOUT', 'name'=>'about', 'parent'=>''],
     ];
-    
+
     foreach ($pages_array as $value) {
         setting_pages($value);
     }
 }
 
-function setting_pages( $val ) {    
+function setting_pages( $val ) {
     //親ページ判別
     if(!empty($val['parent'])){
         $parent_id = get_page_by_path($val['parent']);

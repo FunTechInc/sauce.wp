@@ -38,20 +38,20 @@ function registerPostandTaxonomy() {
 
 	//カスタムタクソノミーのアーカイブのURLの構造を変更する場合
 	register_taxonomy(
-        'sample_category',
-        'sample',
-        array(
+		'sample_category',
+		'sample',
+		array(
 			'labels' => array(
 			'name' => 'サンプルカテゴリ',
 			'add_new_item' => 'サンプルカテゴリを追加',
 			'edit_item' => 'サンプルカテゴリの編集',
-        ),
-        'hierarchical' => true,
-        'show_admin_column' => true,
-        'rewrite' => array('with_front' => false,'hierarchical' => true,'slug' => 'sample/category'),
-        'show_ui' => true,
-        'show_in_rest' => true,
-        )
+		),
+		'hierarchical' => true,
+		'show_admin_column' => true,
+		'rewrite' => array('with_front' => false,'hierarchical' => true,'slug' => 'sample/category'),
+		'show_ui' => true,
+		'show_in_rest' => true,
+		)
 	);
 }
 add_action('init','registerPostandTaxonomy');
@@ -72,7 +72,7 @@ function custom_post_type_link( $link, $post ){
 add_filter( 'post_type_link', 'custom_post_type_link', 1, 2 );
 
 function custom_rewrite_rules_array( $rules ) {
-	$new_rewrite_rules = array( 
+	$new_rewrite_rules = array(
 		'hogehoge/([0-9]+)/?$' => 'index.php?post_type=hogehoge&p=$matches[1]',
 		'poyopoyo/([0-9]+)/?$' => 'index.php?post_type=poyopoyo&p=$matches[1]',
 	);

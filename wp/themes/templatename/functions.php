@@ -1,7 +1,7 @@
 <?php
-
+// Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) )
-	exit;  
+   exit;
 
 
 $isDebug = defined('WP_DEBUG') && WP_DEBUG;
@@ -21,5 +21,6 @@ require_once $get_template_directroy . '/config/mainquery.php';
 require_once $get_template_directroy . '/config/search.php';
 require_once $get_template_directroy . '/config/meta.php';
 require_once $get_template_directroy . '/config/plugin.php';
+require_once $get_template_directroy . '/config/cf7.php';
 
 require_once $get_template_directroy . '/config/initialize-setup.php';
