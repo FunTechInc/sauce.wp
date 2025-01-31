@@ -58,7 +58,7 @@ $spacing-72: if($designRoot==1, 7.2rem, 72px);
 $spacing-80: if($designRoot==1, 8rem, 80px);
 $spacing-88: if($designRoot==1, 8.8rem, 88px);
 $spacing-96: if($designRoot==1, 9.6rem, 96px);
-$spacing-104: if($designRoot==1, 1.4rem, 104px);
+$spacing-104: if($designRoot==1, 10.4rem, 104px);
 $spacing-112: if($designRoot==1, 11.2rem, 112px);
 $spacing-120: if($designRoot==1, 12rem, 120px);
 $spacing-240: if($designRoot==1, 24rem, 240px);
@@ -118,24 +118,24 @@ $letter-spacing-base: .05em !default;
 @font-face {
    font-family: "Noto Sans JP";
    font-weight: 400;
-   src: url("#{$path}/assets/font/NotoSansCJKjp-Regular.woff2") format("woff2"),
-      url("#{$path}/assets/font/NotoSansCJKjp-Regular.woff") format("woff");
+   src: url("#{$path}/assets/font/NotoSansJP-Regular.woff2") format("woff2"),
+      url("#{$path}/assets/font/NotoSansJP-Regular.woff") format("woff");
 }
 @font-face {
    font-family: "Noto Sans JP";
    font-weight: 500;
-   src: url("#{$path}/assets/font/NotoSansCJKjp-Medium.woff2") format("woff2"),
-      url("#{$path}/assets/font/NotoSansCJKjp-Medium.woff") format("woff");
+   src: url("#{$path}/assets/font/NotoSansJP-Medium.woff2") format("woff2"),
+      url("#{$path}/assets/font/NotoSansJP-Medium.woff") format("woff");
 }
 @font-face {
    font-family: "Noto Sans JP";
-   font-weight: 600;
-   src: url("#{$path}/assets/font/NotoSansCJKjp-Bold.woff2") format("woff2"),
-      url(".#{$path}/assets/font/NotoSansCJKjp-Bold.woff") format("woff");
+   font-weight: 700;
+   src: url("#{$path}/assets/font/NotoSansJP-Bold.woff2") format("woff2"),
+      url(".#{$path}/assets/font/NotoSansJP-Bold.woff") format("woff");
 }
 
 // fontfamily
-$fontfamily-base: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'NotoSansCJKjp', 'Yu Gothic', YuGothic, Verdana, Meiryo, 'M+ 1p', sans-serif;
+$fontfamily-base: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Yu Gothic', YuGothic, Verdana, Meiryo, 'M+ 1p', sans-serif;
 $fontfamily-eng: "Noto Sans JP", serif;
 
 /*===============================================
